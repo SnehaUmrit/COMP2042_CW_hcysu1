@@ -3,6 +3,7 @@ package com.Frogger.Manager;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.Frogger.Actor.*;
 import com.Frogger.Actor.BackgroundImage;
 import com.Frogger.Model.FroggerButton;
 import com.Frogger.Model.FroggerSubScene;
@@ -39,6 +40,7 @@ public class ViewManager {
 	private FroggerSubScene helpSubScene;
 	private FroggerSubScene sceneToHide;
 	
+
 	
 	List<FroggerButton> menuButtons;
 
