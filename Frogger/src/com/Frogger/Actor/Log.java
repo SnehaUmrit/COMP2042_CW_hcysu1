@@ -14,6 +14,10 @@ public class Log extends Actor {
 			setX(700);
 	}
 	
+	public Log() {
+		
+	}
+	
 	public Log(String imageLink, int size, int xpos, int ypos, double s) {
 		setImage(new Image(imageLink, size,size, true, true));
 		setX(xpos);

@@ -9,6 +9,11 @@ public class End extends Actor{
 		// TODO Auto-generated method st
 	}
 	
+	/**
+	 * Parameters used to set size of image
+	 * @param x  
+	 * @param y
+	 */
 	public End(int x, int y) {
 		setX(x);
 		setY(y);
