@@ -2,12 +2,13 @@ package com.Frogger.Actor;
 
 import java.util.ArrayList;
 
+import com.Frogger.Manager.GameViewManager;
+
 import javafx.event.EventHandler;
 
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-
 
 public class Animal extends Actor {
 	Image imgW1;
@@ -133,7 +134,7 @@ public class Animal extends Actor {
 	
 	@Override
 	public void act(long now) {
-		int bounds = 0;
+		//int bounds = 0;
 		if (getY()<0 || getY()>734) {
 			setX(300);
 			setY(679.8+movement);
@@ -204,12 +205,30 @@ public class Animal extends Actor {
 		if (getX()>600) {
 			move(-movement*2, 0);
 		}
-		if (getIntersectingObjects(Obstacle.class).size() >= 1) {
-			carDeath = true;
-		}
+		
+		getCarDeath();
+		
+		
+		//reaching the end
 		if (getX() == 240 && getY() == 82) {
 			stop = true;
 		}
+		
+		getWaterDeath();
+		
+	}
+	
+	
+	public boolean getCarDeath() {
+		if (getIntersectingObjects(Obstacle.class).size() >= 1) {
+			carDeath = true;
+		}
+		return carDeath;
+		
+	}
+	
+	public boolean getWaterDeath() {
+		
 		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
 			if(getIntersectingObjects(Log.class).get(0).getLeft())
 				move(-2,0);
@@ -245,7 +264,10 @@ public class Animal extends Actor {
 			//setX(300);
 			//setY(679.8+movement);
 		}
+		return waterDeath;
+		
 	}
+	
 	public boolean getStop() {
 		return end==5;
 	}

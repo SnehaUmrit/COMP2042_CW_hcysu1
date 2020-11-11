@@ -6,6 +6,7 @@ import com.Frogger.Actor.Animal;
 import com.Frogger.Actor.BackgroundImage;
 import com.Frogger.Actor.Digit;
 import com.Frogger.Actor.End;
+import com.Frogger.Actor.FrogLives;
 import com.Frogger.Actor.Log;
 import com.Frogger.Actor.Obstacle;
 import com.Frogger.Actor.Turtle;
@@ -16,6 +17,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class GameViewManager {
@@ -23,16 +25,19 @@ public class GameViewManager {
 	private MyStage gamePane;
 	private Scene gameScene;
 	private Stage gameStage;
-
+	private Stage menuStage;
+	Animal animal = new Animal("file:res/Sprites/froggerUp.png");
+	long now;
+	AnimationTimer timer;
 	
 	private static final int GAME_WIDTH = 600;
 	private static final int GAME_HEIGHT = 800;
 		
-	private Stage menuStage;
+	FrogLives fl = new FrogLives();
+	int numOfLives = fl.setLives();
 	
-	Animal animal;
-	AnimationTimer timer;
-	
+	private ImageView[] froglives;
+
 	public GameViewManager() {
 		initialiseStage();
 	}
@@ -48,9 +53,10 @@ public class GameViewManager {
 	
 	public void createNewGame(Stage menuStage) {
 		this.menuStage = menuStage;
-		this.menuStage.hide();
+		this.menuStage.hide();		
 		createTimer();
 		createGameBackground();
+		createFrogLives();
 		CreateGameObstacles();
 		createFrog();
 		gameStage.show();
@@ -58,18 +64,21 @@ public class GameViewManager {
 	
 	
 	public void createGameBackground() {
+
 		BackgroundImage gameBackground = new BackgroundImage("file:res/Background/gamebackground.png");
 		gamePane.add(gameBackground);
-	}
-	
-	public void createFrog() {
-		animal = new Animal("file:res/Sprites/froggerUp.png");
-		gamePane.add(animal);
+		
 		
 	}
 	
+	public void createFrog() {
+		
+		gamePane.add(animal);
+
+	}
 	
-	public void CreateGameObstacles() {
+	public void CreateGameObstacles() {	
+		
 		createLogs();
 		createTurtles();
 		createCars();
@@ -135,9 +144,9 @@ public class GameViewManager {
 	}
 	
 	public void createTrucks() {
-		
+
 		gamePane.add(new Obstacle("file:res/Obstacles/truck1"+"Right.png", 0, 613, 1, 120, 120));
-		gamePane.add(new Obstacle("file:res/Obstacles/truck1"+"Right.png", 300, 613, 1, 120, 120));
+		gamePane.add(new Obstacle("file:res/Obstacles/truck1\"+\"Right.png", 300, 613, 1, 120, 120));
 		gamePane.add(new Obstacle("file:res/Obstacles/truck1"+"Right.png", 600, 613, 1, 120, 120));
 		
 		gamePane.add(new Obstacle("file:res/Obstacles/truck2Right.png", 0, 504, 1, 200, 200));
@@ -151,15 +160,59 @@ public class GameViewManager {
 	}
 	
 	
+	public void createFrogLives() {
+		
+		froglives = new ImageView[(numOfLives)];
+		
+		for (int i = 0 ; i < froglives.length ; i++) {
+			froglives[i] = new ImageView("file:res/Sprites/frogger_pixel.png");
+			froglives[i].setFitWidth(20);
+			froglives[i].setFitHeight(20);
+			
+			froglives[i].setLayoutX(20 + (i * 30));
+			froglives[i].setLayoutY(770);
+			gamePane.getChildren().add(froglives[i]);
+		}
+	}
+	
+	public void checkFrogLifeStatus() {
+		
+		
+			if(animal.getCarDeath() || animal.getWaterDeath()) {    
+					    		
+				removeFrogLives();
+	    		
+			} 
+		
+		
+	}
+		
+
+	public void removeFrogLives() {		
+			
+		gamePane.getChildren().remove(froglives[numOfLives-1]);		
+		//numOfLives--;
+		
+		if(numOfLives < 0) {
+			gameStage.close();
+			timer.stop();
+			menuStage.show();
+		}
+		
+	}
 	
 	
 	public void createTimer() {
-        timer = new AnimationTimer() {
+        timer = new AnimationTimer() {        	
             @Override
             public void handle(long now) {
+            	//createFrogLives();
+            	checkFrogLifeStatus();
+            	           	
             	if (animal.changeScore()) {
             		setNumber(animal.getPoints());
             	}
+            	
             	if (animal.getStop()) {
             		System.out.print("STOPP:");
             		gamePane.stopMusic();
@@ -173,6 +226,7 @@ public class GameViewManager {
             	}
             }
         };
+       // timer.start();
     }
 	
 	public void start() {
@@ -195,4 +249,6 @@ public class GameViewManager {
     		  shift+=30;
     		}
     }
+    
+    
 }
