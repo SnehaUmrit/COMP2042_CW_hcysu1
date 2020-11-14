@@ -19,6 +19,9 @@ public class Animal extends Actor {
 	Image imgA2;
 	Image imgS2;
 	Image imgD2;
+	
+	public static final double Y_FIX = 692.8;
+	
 	int points = 0;
 	int end = 0;
 	private boolean second = false;
@@ -32,11 +35,14 @@ public class Animal extends Actor {
 	boolean changeScore = false;
 	int carD = 0;
 	double w = 800;
+	
 	ArrayList<End> inter = new ArrayList<End>();
+	
+	
 	public Animal(String imageLink) {
 		setImage(new Image(imageLink, imgSize, imgSize, true, true));
 		setX(300);
-		setY(679.8+movement);
+		setY(Y_FIX+movement);
 		imgW1 = new Image("file:res/Sprites/froggerUp.png", imgSize, imgSize, true, true);
 		imgA1 = new Image("file:res/Sprites/froggerLeft.png", imgSize, imgSize, true, true);
 		imgS1 = new Image("file:res/Sprites/froggerDown.png", imgSize, imgSize, true, true);
@@ -45,11 +51,14 @@ public class Animal extends Actor {
 		imgA2 = new Image("file:res/Sprites/froggerLeftJump.png", imgSize, imgSize, true, true);
 		imgS2 = new Image("file:res/Sprites/froggerDownJump.png", imgSize, imgSize, true, true);
 		imgD2 = new Image("file:res/Sprites/froggerRightJump.png", imgSize, imgSize, true, true);
+		
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
+			
 			public void handle(KeyEvent event){
-				if (noMove) {
-					
-				}
+				if (noMove) {					
+				} 
+				
+				
 				else {
 				if (second) {
 					if (event.getCode() == KeyCode.W) {	  
@@ -137,7 +146,7 @@ public class Animal extends Actor {
 		//int bounds = 0;
 		if (getY()<0 || getY()>734) {
 			setX(300);
-			setY(679.8+movement);
+			setY(Y_FIX + movement);
 		}
 		if (getX()<0) {
 			move(movement*2, 0);
@@ -158,7 +167,7 @@ public class Animal extends Actor {
 			}
 			if (carD == 4) {
 				setX(300);
-				setY(679.8+movement);
+				setY(Y_FIX+movement);
 				carDeath = false;
 				carD = 0;
 				setImage(new Image("file:res/Sprites/froggerUp.png", imgSize, imgSize, true, true));
@@ -189,18 +198,20 @@ public class Animal extends Actor {
 			}
 			if (carD == 5) {
 				setX(300);
-				setY(679.8+movement);
+				setY(Y_FIX+movement);
 				waterDeath = false;
 				carD = 0;
 				setImage(new Image("file:res/Sprites/froggerUp.png", imgSize, imgSize, true, true));
 				noMove = false;
+				
 				if (points>50) {
-					points-=50;
+					points -= 50;
 					changeScore = true;
 				}
 			}
 			
 		}
+		
 		
 		if (getX()>600) {
 			move(-movement*2, 0);
@@ -214,7 +225,41 @@ public class Animal extends Actor {
 			stop = true;
 		}
 		
-		getWaterDeath();
+		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
+			if(getIntersectingObjects(Log.class).get(0).getLeft())
+				move(0,0);
+			else
+				move (0,0);
+		}
+		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) {
+			move(0,0);
+		}
+		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) {
+			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
+				waterDeath = true;
+			} else {
+				move(0,0);
+			}
+		}
+		else if (getIntersectingObjects(End.class).size() >= 1) {
+			inter = (ArrayList<End>) getIntersectingObjects(End.class);
+			if (getIntersectingObjects(End.class).get(0).isActivated()) {
+				end--;
+				points-=50;
+			}
+			points+=50;
+			changeScore = true;
+			w=800;
+			getIntersectingObjects(End.class).get(0).setEnd();
+			end++;
+			setX(300);
+			setY(Y_FIX+movement);
+		}
+		else if ( getY() < 390 ){
+			waterDeath = true;
+			//setX(300);
+			//setY(679.8+movement);
+		}
 		
 	}
 	
@@ -257,9 +302,9 @@ public class Animal extends Actor {
 			getIntersectingObjects(End.class).get(0).setEnd();
 			end++;
 			setX(300);
-			setY(679.8+movement);
+			setY(Y_FIX+movement);
 		}
-		else if (getY()<413){
+		else if ( getY() < 390 ){
 			waterDeath = true;
 			//setX(300);
 			//setY(679.8+movement);

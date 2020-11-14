@@ -6,7 +6,7 @@ import com.Frogger.Actor.Animal;
 import com.Frogger.Actor.BackgroundImage;
 import com.Frogger.Actor.Digit;
 import com.Frogger.Actor.End;
-import com.Frogger.Actor.FrogLives;
+
 import com.Frogger.Actor.Log;
 import com.Frogger.Actor.Obstacle;
 import com.Frogger.Actor.Turtle;
@@ -29,13 +29,17 @@ public class GameViewManager {
 	Animal animal = new Animal("file:res/Sprites/froggerUp.png");
 	long now;
 	AnimationTimer timer;
+	private static final int START_TIME = 60;
+	
 	
 	private static final int GAME_WIDTH = 600;
 	private static final int GAME_HEIGHT = 800;
 		
-	FrogLives fl = new FrogLives();
-	int numOfLives = fl.setLives();
+
+	private static final int FROGGER_LIVES = 3;
 	
+	
+	public int gameLives = FROGGER_LIVES;
 	private ImageView[] froglives;
 
 	public GameViewManager() {
@@ -65,7 +69,7 @@ public class GameViewManager {
 	
 	public void createGameBackground() {
 
-		BackgroundImage gameBackground = new BackgroundImage("file:res/Background/gamebackground.png");
+		BackgroundImage gameBackground = new BackgroundImage("file:res/Background/backdroptry7.png");
 		gamePane.add(gameBackground);
 		
 		
@@ -124,34 +128,38 @@ public class GameViewManager {
 	}
 	
 	public void createEnds() {
-		gamePane.add(new End(13,60));
-		gamePane.add(new End(141,60));
-		gamePane.add(new End(141 + 141-13,60));
-		gamePane.add(new End(141 + 141-13+141-13+1,60));
-		gamePane.add(new End(141 + 141-13+141-13+141-13+3,60));		
+		gamePane.add(new End(13,54));
+		gamePane.add(new End(141,54));
+		gamePane.add(new End(141 + 141-13,54));
+		gamePane.add(new End(141 + 141-13+141-13+1,54));
+		gamePane.add(new End(141 + 141-13+141-13+141-13+3,54));		
 	}
 	
 	
 	public void createCars() {
-		gamePane.add(new Obstacle("file:res/Obstacles/car1Left.png", 100, 561, -1, 50, 50));
-		gamePane.add(new Obstacle("file:res/Obstacles/car1Left.png", 250, 561, -1, 50, 50));
-		gamePane.add(new Obstacle("file:res/Obstacles/car1Left.png", 400, 561, -1, 50, 50));
-		gamePane.add(new Obstacle("file:res/Obstacles/car1Left.png", 550, 561, -1, 50, 50));
+		/*gamePane.add(new Obstacle("file:res/Obstacles/car1Left.png", 100, 615, -1, 45, 45));
+		gamePane.add(new Obstacle("file:res/Obstacles/car1Left.png", 250, 615, -1, 45, 45));
+		gamePane.add(new Obstacle("file:res/Obstacles/car1Left.png", 400, 615, -1, 45, 45));
+		gamePane.add(new Obstacle("file:res/Obstacles/car1Left.png", 550, 615, -1, 45, 45));
 		
 
-		gamePane.add(new Obstacle("file:res/Obstacles/car1Left.png", 500, 454, -5, 50, 50));
+		gamePane.add(new Obstacle("file:res/Obstacles/racecarleft.png", 500, 500, -5, 55, 55));*/
 		
 	}
 	
 	public void createTrucks() {
-
-		gamePane.add(new Obstacle("file:res/Obstacles/truck1"+"Right.png", 0, 613, 1, 120, 120));
-		gamePane.add(new Obstacle("file:res/Obstacles/truck1\"+\"Right.png", 300, 613, 1, 120, 120));
-		gamePane.add(new Obstacle("file:res/Obstacles/truck1"+"Right.png", 600, 613, 1, 120, 120));
+/*
+		gamePane.add(new Obstacle("file:res/Obstacles/whitetruckright.png", 0, 655, 1, 95, 95));
+		gamePane.add(new Obstacle("file:res/Obstacles/whitetruckright.png", 300, 655, 1, 100, 100));
+		gamePane.add(new Obstacle("file:res/Obstacles/whitetruckright.png", 600, 655, 1, 100, 100));
 		
-		gamePane.add(new Obstacle("file:res/Obstacles/truck2Right.png", 0, 504, 1, 200, 200));
-		gamePane.add(new Obstacle("file:res/Obstacles/truck2Right.png", 500, 504, 1, 200, 200));
 		
+		gamePane.add(new Obstacle("file:res/Obstacles/tractorright.png", 0, 550, 1, 60, 60));
+		gamePane.add(new Obstacle("file:res/Obstacles/tractorright.png", 350, 550, 1, 60, 60));
+		gamePane.add(new Obstacle("file:res/Obstacles/tractorright.png", 700, 550, 1, 60, 60));
+		
+		gamePane.add(new Obstacle("file:res/Obstacles/truck2Right.png", 0, 460 , 2 , 190,190));
+		gamePane.add(new Obstacle("file:res/Obstacles/truck2Right.png", 500, 460 , 2 , 190,190));*/
 	}
 	
 	
@@ -162,7 +170,7 @@ public class GameViewManager {
 	
 	public void createFrogLives() {
 		
-		froglives = new ImageView[(numOfLives)];
+		froglives = new ImageView[FROGGER_LIVES];
 		
 		for (int i = 0 ; i < froglives.length ; i++) {
 			froglives[i] = new ImageView("file:res/Sprites/frogger_pixel.png");
@@ -178,10 +186,8 @@ public class GameViewManager {
 	public void checkFrogLifeStatus() {
 		
 		
-			if(animal.getCarDeath() || animal.getWaterDeath()) {    
-					    		
-				removeFrogLives();
-	    		
+			if(animal.getCarDeath() || animal.getWaterDeath()) {    					    		
+				removeFrogLives();	    		
 			} 
 		
 		
@@ -190,10 +196,10 @@ public class GameViewManager {
 
 	public void removeFrogLives() {		
 			
-		gamePane.getChildren().remove(froglives[numOfLives-1]);		
-		//numOfLives--;
+		gamePane.getChildren().remove(froglives[gameLives - 1]);		
+		//gameLives--;
 		
-		if(numOfLives < 0) {
+		if(gameLives < 0) {
 			gameStage.close();
 			timer.stop();
 			menuStage.show();
