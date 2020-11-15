@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.Frogger.Actor.Animal;
 import com.Frogger.Actor.BackgroundImage;
+import com.Frogger.Actor.DecreasingTimer;
 import com.Frogger.Actor.Digit;
 import com.Frogger.Actor.End;
 
@@ -14,10 +15,15 @@ import com.Frogger.Actor.WetTurtle;
 
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class GameViewManager {
@@ -29,8 +35,10 @@ public class GameViewManager {
 	Animal animal = new Animal("file:res/Sprites/froggerUp.png");
 	long now;
 	AnimationTimer timer;
-	private static final int START_TIME = 60;
 	
+	private static final int LEVEL_TIME = 60;
+	Rectangle rectangle; 
+	public double timegone = 0.0;
 	
 	private static final int GAME_WIDTH = 600;
 	private static final int GAME_HEIGHT = 800;
@@ -38,10 +46,12 @@ public class GameViewManager {
 
 	private static final int FROGGER_LIVES = 3;
 	
-	
-	public int gameLives = FROGGER_LIVES;
+	public int timeInSeconds = LEVEL_TIME;
+	public int gameLives = FROGGER_LIVES - 1;
 	private ImageView[] froglives;
 
+	DecreasingTimer dt = new DecreasingTimer();	
+	
 	public GameViewManager() {
 		initialiseStage();
 	}
@@ -182,38 +192,100 @@ public class GameViewManager {
 			gamePane.getChildren().add(froglives[i]);
 		}
 	}
-	
-	public void checkFrogLifeStatus() {
-		
-		
-			if(animal.getCarDeath() || animal.getWaterDeath()) {    					    		
-				removeFrogLives();	    		
-			} 
-		
-		
-	}
 		
 
 	public void removeFrogLives() {		
 			
-		gamePane.getChildren().remove(froglives[gameLives - 1]);		
-		//gameLives--;
+
+		if (gameLives >= 0) {
+			gamePane.getChildren().remove(froglives[gameLives]);			
+		}			
+			
 		
 		if(gameLives < 0) {
 			gameStage.close();
-			timer.stop();
+			gamePane.stopMusic();
+			stop();
 			menuStage.show();
 		}
 		
 	}
 	
 	
+	public void showFullTimer() {
+		
+		rectangle = new Rectangle();
+		rectangle.setX(265);
+		rectangle.setY(770);
+		rectangle.setWidth(240);
+		rectangle.setHeight(20);
+		rectangle.setFill(Color.GREEN);
+		gamePane.getChildren().add(rectangle);
+
+	}
+	
+	
+	public void showDecreasingTimer() {
+		showFullTimer();
+		
+		if (!(animal.getStop())) {
+			if (timegone < 241 && !(animal.getCarDeath() && !(animal.getWaterDeath())) ) {
+				rectangle = new Rectangle();
+				rectangle.setX(264);
+				rectangle.setY(769);
+				rectangle.setWidth(1 + timegone);
+				rectangle.setHeight(22);
+				rectangle.setFill(Color.BLACK);
+				gamePane.getChildren().add(rectangle); 
+				timegone = timegone + 0.1;
+				
+			}
+		}
+		
+	}
+	
+	public void getTimerStatus() {
+		showDecreasingTimer();
+		
+
+		if (timegone < 241 && animal.getYPosition() && !(animal.getStop())) {
+			timegone = 0.0;
+					
+		}
+		
+		if (timegone > 240 && !(animal.getYPosition())) {
+			removeFrogLives();
+		
+			timegone = 0.0;
+			
+		}
+		
+		if (animal.getCarDeath() || animal.getWaterDeath()) {
+			removeFrogLives();
+			//gameLives--;
+			timegone = 0.0;
+		}
+		
+		
+		
+		
+		
+
+	}
+	
+	
+	
+	
+
 	public void createTimer() {
         timer = new AnimationTimer() {        	
             @Override
             public void handle(long now) {
-            	//createFrogLives();
-            	checkFrogLifeStatus();
+            	
+            	if (!(animal.getStop())) {
+            		getTimerStatus();
+            	}
+            	
             	           	
             	if (animal.changeScore()) {
             		setNumber(animal.getPoints());

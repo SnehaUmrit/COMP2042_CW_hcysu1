@@ -35,6 +35,7 @@ public class Animal extends Actor {
 	boolean changeScore = false;
 	int carD = 0;
 	double w = 800;
+	boolean ypos = false;
 	
 	ArrayList<End> inter = new ArrayList<End>();
 	
@@ -61,44 +62,44 @@ public class Animal extends Actor {
 				
 				else {
 				if (second) {
-					if (event.getCode() == KeyCode.W) {	  
+					if (event.getCode() == KeyCode.UP) {	  
 		                move(0, -movement);
 		                changeScore = false;
 		                setImage(imgW1);
 		                second = false;
 		            }
-		            else if (event.getCode() == KeyCode.A) {	            	
+		            else if (event.getCode() == KeyCode.LEFT) {	            	
 		            	 move(-movementX, 0);
 		            	 setImage(imgA1);
 		            	 second = false;
 		            }
-		            else if (event.getCode() == KeyCode.S) {	            	
+		            else if (event.getCode() == KeyCode.DOWN) {	            	
 		            	 move(0, movement);
 		            	 setImage(imgS1);
 		            	 second = false;
 		            }
-		            else if (event.getCode() == KeyCode.D) {	            	
+		            else if (event.getCode() == KeyCode.RIGHT) {	            	
 		            	 move(movementX, 0);
 		            	 setImage(imgD1);
 		            	 second = false;
 		            }
 				}
-				else if (event.getCode() == KeyCode.W) {	            	
+				else if (event.getCode() == KeyCode.UP) {	            	
 	                move(0, -movement);
 	                setImage(imgW2);
 	                second = true;
 	            }
-	            else if (event.getCode() == KeyCode.A) {	            	
+	            else if (event.getCode() == KeyCode.LEFT) {	            	
 	            	 move(-movementX, 0);
 	            	 setImage(imgA2);
 	            	 second = true;
 	            }
-	            else if (event.getCode() == KeyCode.S) {	            	
+	            else if (event.getCode() == KeyCode.DOWN) {	            	
 	            	 move(0, movement);
 	            	 setImage(imgS2);
 	            	 second = true;
 	            }
-	            else if (event.getCode() == KeyCode.D) {	            	
+	            else if (event.getCode() == KeyCode.RIGHT) {	            	
 	            	 move(movementX, 0);
 	            	 setImage(imgD2);
 	            	 second = true;
@@ -110,7 +111,7 @@ public class Animal extends Actor {
 			public void handle(KeyEvent event) {
 				if (noMove) {}
 				else {
-				if (event.getCode() == KeyCode.W) {	  
+				if (event.getCode() == KeyCode.UP) {	  
 					if (getY() < w) {
 						changeScore = true;
 						w = getY();
@@ -120,17 +121,17 @@ public class Animal extends Actor {
 	                setImage(imgW1);
 	                second = false;
 	            }
-	            else if (event.getCode() == KeyCode.A) {	            	
+	            else if (event.getCode() == KeyCode.LEFT) {	            	
 	            	 move(-movementX, 0);
 	            	 setImage(imgA1);
 	            	 second = false;
 	            }
-	            else if (event.getCode() == KeyCode.S) {	            	
+	            else if (event.getCode() == KeyCode.DOWN) {	            	
 	            	 move(0, movement);
 	            	 setImage(imgS1);
 	            	 second = false;
 	            }
-	            else if (event.getCode() == KeyCode.D) {	            	
+	            else if (event.getCode() == KeyCode.RIGHT) {	            	
 	            	 move(movementX, 0);
 	            	 setImage(imgD1);
 	            	 second = false;
@@ -229,7 +230,7 @@ public class Animal extends Actor {
 			if(getIntersectingObjects(Log.class).get(0).getLeft())
 				move(0,0);
 			else
-				move (0,0);
+				move (0.75,0);
 		}
 		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) {
 			move(0,0);
@@ -263,6 +264,13 @@ public class Animal extends Actor {
 		
 	}
 	
+	public boolean getYPosition() {
+		if (getY() < 120) {		
+				ypos = true;						
+		}
+		return ypos;
+	}
+	
 	
 	public boolean getCarDeath() {
 		if (getIntersectingObjects(Obstacle.class).size() >= 1) {
@@ -273,21 +281,21 @@ public class Animal extends Actor {
 	}
 	
 	public boolean getWaterDeath() {
-		
 		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
 			if(getIntersectingObjects(Log.class).get(0).getLeft())
-				move(-2,0);
+				move(-0.40,0);
 			else
-				move (.75,0);
+				move (0.75,0);
 		}
 		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) {
-			move(-1,0);
+			move(-0.50,0);
 		}
+	
 		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) {
 			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
 				waterDeath = true;
 			} else {
-				move(-1,0);
+				move(-0.50,0);
 			}
 		}
 		else if (getIntersectingObjects(End.class).size() >= 1) {
@@ -320,6 +328,7 @@ public class Animal extends Actor {
 	public int getPoints() {
 		return points;
 	}
+	
 	
 	public boolean changeScore() {
 		if (changeScore) {

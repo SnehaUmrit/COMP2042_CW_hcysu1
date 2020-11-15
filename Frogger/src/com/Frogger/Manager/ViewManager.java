@@ -114,7 +114,7 @@ public class ViewManager {
 		buttonPlay.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
-			public void handle(ActionEvent arg0) {
+			public void handle(ActionEvent event) {
 				
 				GameViewManager gameManager = new GameViewManager();
 				gameManager.createNewGame(mainStage);
