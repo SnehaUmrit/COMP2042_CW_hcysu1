@@ -1,4 +1,4 @@
-package com.Frogger.Actor;
+package com.Frogger.Model;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;

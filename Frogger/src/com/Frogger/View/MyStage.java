@@ -1,4 +1,4 @@
-package com.Frogger.Manager;
+package com.Frogger.View;
 
 import java.io.File;
 

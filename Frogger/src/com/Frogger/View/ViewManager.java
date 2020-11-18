@@ -1,12 +1,11 @@
-package com.Frogger.Manager;
+package com.Frogger.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.Frogger.Actor.*;
-import com.Frogger.Actor.BackgroundImage;
-import com.Frogger.Model.FroggerButton;
-import com.Frogger.Model.FroggerSubScene;
+import com.Frogger.Model.*;
+import com.Frogger.View.FroggerButton;
+import com.Frogger.View.FroggerSubScene;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

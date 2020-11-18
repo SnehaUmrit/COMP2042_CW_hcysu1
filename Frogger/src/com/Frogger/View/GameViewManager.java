@@ -1,17 +1,16 @@
-package com.Frogger.Manager;
+package com.Frogger.View;
 
 import java.util.List;
 
-import com.Frogger.Actor.Animal;
-import com.Frogger.Actor.BackgroundImage;
-import com.Frogger.Actor.DecreasingTimer;
-import com.Frogger.Actor.Digit;
-import com.Frogger.Actor.End;
-
-import com.Frogger.Actor.Log;
-import com.Frogger.Actor.Obstacle;
-import com.Frogger.Actor.Turtle;
-import com.Frogger.Actor.WetTurtle;
+import com.Frogger.Model.Animal;
+import com.Frogger.Model.BackgroundImage;
+import com.Frogger.Model.DecreasingTimer;
+import com.Frogger.Model.Digit;
+import com.Frogger.Model.End;
+import com.Frogger.Model.Log;
+import com.Frogger.Model.Obstacle;
+import com.Frogger.Model.Turtle;
+import com.Frogger.Model.WetTurtle;
 
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
@@ -27,7 +26,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class GameViewManager {
-	
+	 
 	private MyStage gamePane;
 	private Scene gameScene;
 	private Stage gameStage;

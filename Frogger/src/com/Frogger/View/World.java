@@ -1,10 +1,10 @@
-package com.Frogger.Manager;
+package com.Frogger.View;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.Frogger.Actor.Actor;
+import com.Frogger.Model.Actor;
 
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;

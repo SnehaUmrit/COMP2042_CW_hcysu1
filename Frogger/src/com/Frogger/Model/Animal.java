@@ -1,8 +1,8 @@
-package com.Frogger.Actor;
+package com.Frogger.Model;
 
 import java.util.ArrayList;
 
-import com.Frogger.Manager.GameViewManager;
+import com.Frogger.View.GameViewManager;
 
 import javafx.event.EventHandler;
 
