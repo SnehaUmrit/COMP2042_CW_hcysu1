@@ -11,7 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-public class FroggerButton extends Button{
+public class ButtonView extends Button{
 	
 	private final String FONT_PATH = "res/Font/Kenney_Future_Narrow.ttf";
 	private final String BUTTON_PRESSED_STYLE = "-fx-background-color:transparent";
@@ -21,7 +21,7 @@ public class FroggerButton extends Button{
 	 * Constructor to call methods
 	 * @param text
 	 */
-	public FroggerButton(String text) {
+	public ButtonView(String text) {
 		
 		setText(text);
 		setTextFill(Color.WHITE);

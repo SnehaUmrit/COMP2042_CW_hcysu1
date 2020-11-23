@@ -1,9 +1,10 @@
 package com.Frogger.Model;
 
-import javafx.scene.image.Image;
 
-public class Digit extends Actor{
-	int dim;
+
+public class Digit //extends Actor
+{
+	/*int dim;
 	Image im1;
 	@Override
 	public void act(long now) {
@@ -16,6 +17,6 @@ public class Digit extends Actor{
 		setImage(im1);
 		setX(x);
 		setY(y);
-	}
+	}*/
 	
 }
