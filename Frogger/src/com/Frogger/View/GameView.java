@@ -9,7 +9,7 @@ public class GameView  extends Pane{
 	
 	public GameView() {
 		
-		BackgroundImage gameBackground = new BackgroundImage("file:res/Background/backdroptry7.png");
+		BackgroundImage gameBackground = new BackgroundImage("file:res/Background/backdroptry9.png");
 		getChildren().add(gameBackground);
 		
 		getChildren().add(LevelController.getLevelView());

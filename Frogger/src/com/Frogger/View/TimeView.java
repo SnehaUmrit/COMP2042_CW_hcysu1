@@ -31,7 +31,11 @@ public class TimeView extends Pane{
         progressBar.setLayoutX(250);
         getChildren().add(progressBar);
         
-
+        //"-fx-text-box-border: none;"+
+        setStyle("-fx-control-inner-background: black;"+
+        		
+        		"-fx-box-border: none;"
+        		+ "-fx-accent: green;");
 	}
 	
     public ProgressBar getProgressBar() {
@@ -42,6 +46,7 @@ public class TimeView extends Pane{
         return progressTimeline;
     }
 	
+   
 	
 
 }
