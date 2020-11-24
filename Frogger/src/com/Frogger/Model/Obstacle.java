@@ -4,38 +4,37 @@ import javafx.scene.image.Image;
 
 public class Obstacle extends Actor {
 	
-	
-	
+	public Obstacle(int x, int y, String type,double speed) {
+		super(x, y);		
 
-	public Obstacle(int x, int y, String type) {
-		super(x, y);
-		int height = 35;
 		switch (type) {
+		
 		case "race car":
-			actorSpeed = -3;
-			setImage(new Image("file:res/Obstacles/racecarleft.png",67,height,false,true));
+			actorSpeed = speed;
+			setImage(new Image("file:res/Obstacles/racecarleft.png",63,63,false,true));
 			break;
+		
 		case "normal car":
-			actorSpeed = -1;
-			setImage(new Image("file:res/Obstacles/car1Left.png", 67,height,false,true));			
+			actorSpeed = speed;
+			setImage(new Image("file:res/Obstacles/car1Left.png",45,35,false,true));			
 			break;
+	
 		case "short white truck":
-			actorSpeed = 1;
-			setImage(new Image("file:res/Obstacles/whitetruckright.png",180,height,false,true));
-			break;
 
-			
+			actorSpeed = speed;
+			setImage(new Image("file:res/Obstacles/whitetruckright.png",100,60,false,true));
+			break;
+		
 		case "long blue truck":
-			actorSpeed = 1;
-			setImage(new Image("file:res/Obstacles/truck2Right.png",180,height,false,true));
+			actorSpeed = speed;
+			setImage(new Image("file:res/Obstacles/truck2Right.png",190,39,false,true));
 			break;
 			
 		case "tractor":
-			actorSpeed = 2;
-			setImage(new Image("file:res/Obstacles/tractorright.png",67,height,false,true));
+			actorSpeed = speed;
+			setImage(new Image("file:res/Obstacles/tractorright.png",70,60,false,true));
 			break;
-			
-		
+
 		}
 	}
 

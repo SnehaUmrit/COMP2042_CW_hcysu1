@@ -3,14 +3,14 @@ package com.Frogger.Model;
 
 public class Turtle extends AnimatedObject{
 
-	public Turtle(int x, int y) {
+	public Turtle(int x, int y,double speed) {
 		super(x, y, 127, 47, new String[] {
 				"file:res/Obstacles/TurtleAnimation1.png",
 				"file:res/Obstacles/TurtleAnimation2.png",
 				"file:res/Obstacles/TurtleAnimation3.png"
 		});
 		
-		actorSpeed = -1;
+		actorSpeed = speed;
 		setImage(states[2]);
 		
 	}

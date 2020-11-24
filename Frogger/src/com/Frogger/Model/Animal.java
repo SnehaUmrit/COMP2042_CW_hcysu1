@@ -12,21 +12,26 @@ import com.Frogger.Controller.ScoreController;
 import com.Frogger.Controller.TimeController;
 
 import javafx.animation.PauseTransition;
-
+import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
-
+import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
 public class Animal extends AnimatedObject {
+	
+	private static final int START_Y = 719;
 	private static final int CONSTANT = 25;
-	private static final int WATER_LEVEL = 400;
+	private static final int WATER_LEVEL = 350;
 	private static final int INSECT_BONUS = 100;
 	private final PauseTransition pause = new PauseTransition(Duration.millis(120));
 	private boolean noMove, carDeath, waterDeath = false;
 	private static boolean finished;
-
+	
+	private double w = 800.0;
+	boolean changeScore = false;
+	
 	public Animal() {
-		super(300, 700, 50, 50, new String[] {
+		super(300, START_Y, 38, 38, new String[] {
 				"file:res/Sprites/froggerUp.png",       //0
 				"file:res/Sprites/froggerLeft.png",     //1
 				"file:res/Sprites/froggerDown.png",		//2
@@ -91,7 +96,8 @@ public class Animal extends AnimatedObject {
 		});
 		
 		finished = false;
-		
+
+
 	}
 	
 	private void setState(int state) {
@@ -102,7 +108,7 @@ public class Animal extends AnimatedObject {
 	private void respawn(int points) {
 		pause.setOnFinished(actionEvent -> {
 			setX(300);
-			setY(700);
+			setY(START_Y);
 			carDeath = waterDeath = noMove = false;
 			ticks = 0;
 			setState(0);
@@ -118,7 +124,7 @@ public class Animal extends AnimatedObject {
 	public void act() {
 		if (ticks == -1 ) {
 			if (LivesController.getFrogLives() > 0) {
-				respawn(-50);
+					respawn(-50);
 			} else if (!finished) {
 				finished = true;
 				MenuController.gameOver();
@@ -126,8 +132,8 @@ public class Animal extends AnimatedObject {
 		}
 		
 				
-		if (getY() > 700 || getY() < 0)
-			setY(700);
+		if (getY() > START_Y || getY() < 0)
+			setY(START_Y);
 		if (getY() < 0 )
 			setX(600);
 		else if(getX() > 600 )
@@ -136,8 +142,10 @@ public class Animal extends AnimatedObject {
 		
 		if (carDeath) 
 			animate(Arrays.copyOfRange(states,8,12),20);
-		else if (waterDeath)
+			
+		else if (waterDeath) 
 			animate(Arrays.copyOfRange(states, 12, 16),20);
+		
 		else if (!noMove) {
 			List<IntersectingObject> objects = getIntersectingObjects();
 			if (objects.isEmpty() && getY() < WATER_LEVEL) {
@@ -158,6 +166,7 @@ public class Animal extends AnimatedObject {
 				} else if (object instanceof Log)
 					move(((Log) (object)).actorSpeed,0);
 				
+				
 				else if (object instanceof WetTurtle) {
 					if (((WetTurtle) object).isSunk())
 						waterDeath = noMove =  true;
@@ -166,6 +175,18 @@ public class Animal extends AnimatedObject {
 				
 				} else if (object instanceof Turtle)
 					move(((Turtle) (object)).actorSpeed,0);
+				
+				
+				else if (object instanceof UnsafeCrocodile) {
+					if (((UnsafeCrocodile) object).isOpen())
+						waterDeath = noMove =  true;
+					else 
+						move(((UnsafeCrocodile) (object)).actorSpeed,0);
+					
+				} else if (object instanceof SafeCrocodile)
+					move(((SafeCrocodile) (object)).actorSpeed,0);
+				
+	
 				else if (object instanceof End) {
 					if (EndController.unsafe(object)) {
 						noMove = carDeath = true;
@@ -176,6 +197,8 @@ public class Animal extends AnimatedObject {
 						respawn(100);
 					} 
 				}
+				
+
 				
 			}
 		}

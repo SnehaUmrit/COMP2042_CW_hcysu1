@@ -12,9 +12,10 @@ public class WetTurtle extends Turtle{
 	private double chance;
 	
 	
-	public WetTurtle(int x, int y) {
+	public WetTurtle(int x, int y,double speed) {
 		
-		super(x, y);
+		super(x, y,speed);
+		actorSpeed = speed;
 		this.wetTurtleStates = new Image[] {
 				new Image("file:res/Obstacles/TurtleAnimation2Wet.png", 127,47,false,true),
 				new Image("file:res/Obstacles/TurtleAnimation3Wet.png",127,47,false,true),

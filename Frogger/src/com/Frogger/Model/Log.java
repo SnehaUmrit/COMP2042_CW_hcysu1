@@ -5,16 +5,17 @@ import javafx.scene.image.Image;
 public class Log extends Actor {
 
 	
-	public Log(int x, int y, int width) {
+	public Log(int x, int y, int width,double speed) {
 		super(x, y);
+		
 		switch(width) {
-		case 147:
-			setImage(new Image("file:res/Obstacles/log3.png", width,47,false,true));
-			this.actorSpeed = 1;
+		case 150:
+			setImage(new Image("file:res/Obstacles/log3.png", width,40,false,true));
+			this.actorSpeed = speed;
 			break;
-		case 297:
-			setImage(new Image("file:res/Obstacles/logs.png",width,47,false,true));
-			this.actorSpeed = -2;
+		case 300:
+			setImage(new Image("file:res/Obstacles/logs.png",width,40,false,true));
+			this.actorSpeed = speed;
 			break;
 		}
 	}
@@ -23,7 +24,7 @@ public class Log extends Actor {
 	public void act() {
 		move(actorSpeed,0);
 		if (getX() > 600 && actorSpeed > 0)
-			setX(-180);
+			setX(-300);
 		if (getX() < -300 && actorSpeed < 0) 
 			setX(700);
 

@@ -9,8 +9,27 @@ public class GameView  extends Pane{
 	
 	public GameView() {
 		
-		BackgroundImage gameBackground = new BackgroundImage("file:res/Background/backdroptry9.png");
-		getChildren().add(gameBackground);
+		int gameLevel = LevelController.getLevel();
+		switch (gameLevel) {
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		}
+	/*	if (LevelController.getLevel() == 0) {
+			BackgroundImage gameBackground = new BackgroundImage("file:res/Background/backdroptry14.png");
+			getChildren().add(gameBackground);			
+		}*/
+		
+
+		BackgroundImage gameBackground = new BackgroundImage("file:res/Background/backdroptry16.png");
+		getChildren().add(gameBackground);	
 		
 		getChildren().add(LevelController.getLevelView());
 		getChildren().add(TimeController.getTimeView());

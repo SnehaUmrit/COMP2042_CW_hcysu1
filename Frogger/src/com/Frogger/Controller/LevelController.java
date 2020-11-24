@@ -11,7 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 
 public class LevelController {
 	
-	private static final int MAX_LEVEL = 2;
+	private static final int MAX_LEVEL = 5;
 	private static final SimpleIntegerProperty LEVEL_VALUE = new SimpleIntegerProperty();
 	
 	public static String getMaxLevel() {
@@ -28,14 +28,22 @@ public class LevelController {
         return new LevelView();
     }
 	
+    /**
+     * 
+     * @return the elements of array LEVEL1
+     */
 	public static Actor[] getStartingLevel() {
-		LEVEL_VALUE.setValue(1);
+		LEVEL_VALUE.setValue(5);
 		return getCurrentLevel();
 	}
 	
 	public static Actor[] getCurrentLevel() {
 		return Level.getGameLevel(LEVEL_VALUE.get());
 		
+	}
+	
+	public static int getLevel() {
+		return LEVEL_VALUE.getValue().intValue();
 	}
 	
 	public static Actor[] getNextLevel() {

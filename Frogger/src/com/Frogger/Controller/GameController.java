@@ -45,7 +45,10 @@ public class GameController {
 		
 		double chance = RANDOM.nextDouble();
 		if (chance < 0.1) {
-			EndController.flipCrocodile();
+			if (LevelController.getLevel() == 3 || LevelController.getLevel() == 4 || LevelController.getLevel() == 5) {
+				EndController.flipCrocodile();
+			}
+			
 			
 		} else if (bonus < 2 && chance > 0.5 && chance < 0.5005) {
 			chance = RANDOM.nextDouble();
@@ -53,8 +56,11 @@ public class GameController {
 			int componentX = RANDOM.nextInt(5);
 			int y = (componentY + 3) * 50 +1 ;
 			int x = (componentX +100);
-			gameView.getChildren().add(new Insect(x,y));
-			bonus++;
+			if (LevelController.getLevel() == 1 || LevelController.getLevel() == 2 || LevelController.getLevel() == 3) {
+				gameView.getChildren().add(new Insect(x,y));
+				bonus++;
+			}			
+			
 		}
 		
 		

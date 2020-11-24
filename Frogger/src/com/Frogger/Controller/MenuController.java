@@ -114,6 +114,7 @@ public class MenuController {
 				
 				GameView gameView = GameController.getGame();
 				gameView.getChildren().add(new Animal());
+				
 				gameScene = new Scene(gameView,WIDTH,HEIGHT);
 				mainStage.setScene(gameScene);
 
@@ -216,6 +217,8 @@ public class MenuController {
 
 	public static void gameOver() {
 		ScoreBoard.write(ScoreController.getScoresPath());
+		//Do to: Show GameOver Text
+		mainStage.close();
 		intialiseStage();
 	}
 

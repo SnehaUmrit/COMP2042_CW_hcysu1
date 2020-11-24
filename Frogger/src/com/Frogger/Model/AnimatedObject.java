@@ -23,5 +23,7 @@ public abstract class AnimatedObject extends Actor{
 			setImage(states[(ticks/speed) - 1]);
 		}
 		}
+	
+	
 
 }

@@ -7,14 +7,14 @@ public class Snake extends AnimatedObject {
 	private final Random appearance = new Random();
 	private boolean appear = true;
 
-	public Snake(int x, int y) {
-		super(x, y, 112, 44, new String[] {
+	public Snake(int x, int y, double speed) {
+		super(x, y, 90, 25, new String[] {
 				"file:res/Obstacles/snake1.png",
 				"file:res/Obstacles/snake2.png",
 				"file:res/Obstacles/snake3.png"
 		});
 		
-		actorSpeed = -3;
+		actorSpeed = speed;
 		setImage(states[0]);
 		}
 

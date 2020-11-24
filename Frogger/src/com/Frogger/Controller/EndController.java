@@ -7,11 +7,11 @@ import com.Frogger.Model.IntersectingObject;
 
 public class EndController {
 	private static final IntersectingObject[] ENDS = new IntersectingObject[] {
-		new End(35),
-		new End(30+125),
-		new End(30+123*2),
-		new End(30+123*3),
-		new End(30+123*4)
+		new End(13),
+		new End(141),
+		new End(141+141-13),
+		new End(141+141-13+141-13+1),
+		new End(141+141-13+141-13+141-13+3)
 	};
 	
 	private static final Random RANDOM = new Random();
