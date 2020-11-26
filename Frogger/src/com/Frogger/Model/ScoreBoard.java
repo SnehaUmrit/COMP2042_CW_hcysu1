@@ -18,30 +18,33 @@ public class ScoreBoard {
 	public static ArrayList<BoardInput> board;
 	
 	private static class BoardInput implements Comparable<BoardInput>{
-
+		String name;
 		int score;
 		Date date;
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yy");
 		
-		public BoardInput(String[] column) throws ParseException {
-			this.score = Integer.parseInt(column[1]);
-			this.date = new SimpleDateFormat("yyyy-MM-dd").parse(column[2]);
+		public BoardInput(String[] column) throws ParseException{
+            if (column[0].length() > 7)
+                this.name = column[0].substring(0,7);
+            else
+                this.name = column[0];
+            this.score = Integer.parseInt(column[1]);
+            this.date = new SimpleDateFormat("dd-MM-yyyy").parse(column[2]);
 			}
 		
 		@Override
-		public int compareTo(BoardInput input) {
-			
+		public int compareTo(BoardInput input) {			
 			return Integer.compare(input.score, this.score);
 		}
 		
 		@Override
 		public String toString() {
-			return '\n' +  this.score + '\t' + dateFormat.format(this.date);
+			return '\n' + this.name + '\t' + this.score + '\t' + dateFormat.format(this.date);
+			
 		}
 		
 	}
-	
-			
+				
 	public static int getMaxScore() {
 		return board.get(0).score;
 	}
@@ -52,18 +55,14 @@ public class ScoreBoard {
 			board = new ArrayList<>();
 			String line;
 			while ((line = reader.readLine()) != null) {
-				board.add(new BoardInput(line.split(",")));
+				board.add(new BoardInput(line.split(",")));				
 			}
 			Collections.sort(board);
 			for (BoardInput bi : board) {
 				output += bi.toString();
 			}
 			
-			return output;
-			
-			
-			
-			
+			return output;	
 		} catch (IOException e) {
 			return "Reading failed: " + scoresPath + " not found";
 		}
@@ -73,7 +72,7 @@ public class ScoreBoard {
 	public static void write (String scoresPath) {
 		try {
             FileWriter writer = new FileWriter(scoresPath, true);
-            String line = '\n' + " " + ScoreController.getScore() + ',' + java.time.LocalDate.now();
+            String line = '\n' + "Frog" + ',' + ScoreController.getScore() + ',' + java.time.LocalDate.now();           
             writer.write(line);
             writer.flush();
             writer.close();

@@ -8,11 +8,14 @@ import com.Frogger.Model.BackgroundImage;
 import com.Frogger.Model.ScoreBoard;
 import com.Frogger.View.ButtonView;
 import com.Frogger.View.GameView;
+import com.Frogger.View.LabelView;
+import com.Frogger.View.MenuView;
 import com.Frogger.View.SubSceneView;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -33,6 +36,7 @@ public class MenuController {
 	private static SubSceneView scoreSubScene;
 	private static SubSceneView helpSubScene;
 	private static SubSceneView sceneToHide;
+	private static MenuView menuView;
 	
 	private static final int MENU_BUTTONS_STARTX = 260;
 	private static final int MENU_BUTTONS_STARTY = 450;
@@ -52,7 +56,8 @@ public class MenuController {
 		createBackground();
 		createButtons();
 		createLogo();
-		createSubScenes();
+		createHelpSubScenes();
+		createScoreSubScene();
 		
 		mainStage.setTitle("Frogger Menu");
 		mainStage.show();
@@ -76,14 +81,30 @@ public class MenuController {
 		sceneToHide = subScene;
 	}
 
-	public static void createSubScenes() {
-		scoreSubScene = new SubSceneView();
-		mainPane.getChildren().add(scoreSubScene);
-		
+	public static void createHelpSubScenes() {
+
 		helpSubScene = new SubSceneView();
 		mainPane.getChildren().add(helpSubScene);
+		Label helpLabel = new Label(" Please help yourself");
+		helpLabel.setLayoutX(20);
+		helpLabel.setLayoutY(20);
+		helpLabel.setStyle("-fx-text-fill: WHITE;");
+		helpSubScene.getPane().getChildren().add(helpLabel);
+		
 	}
 
+	
+	public static void createScoreSubScene() {
+	
+		scoreSubScene = new SubSceneView();
+		mainPane.getChildren().add(scoreSubScene);
+		Label scoreLabel = new Label(ScoreController.getHighScores());
+		scoreLabel.setLayoutX(20);
+		scoreLabel.setLayoutY(20);		
+		scoreLabel.setStyle("-fx-text-fill: WHITE;");
+		scoreSubScene.getPane().getChildren().add(scoreLabel);	
+		
+	}
 
 	private static void addMenuButton(ButtonView button) {
 		button.setLayoutX(MENU_BUTTONS_STARTX);
@@ -123,6 +144,7 @@ public class MenuController {
 		});
 	}
 	
+
 	
 	private static void createHelpbutton() {
 		ButtonView buttonHelp = new ButtonView("HELP");
@@ -132,13 +154,13 @@ public class MenuController {
 
 			@Override
 			public void handle(ActionEvent event) {
-				showSubScene(helpSubScene);
-				
+				showSubScene(helpSubScene);		
 			}
 			
 		});
 	}
 	
+
 	
 	
 	private static void createScorebutton() {
@@ -148,9 +170,8 @@ public class MenuController {
 		buttonScore.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
-			public void handle(ActionEvent event) {
-				showSubScene(scoreSubScene);
-				
+			public void handle(ActionEvent event) {				
+				showSubScene(scoreSubScene);				
 			}
 			
 		});
@@ -181,6 +202,8 @@ public class MenuController {
 		BackgroundImage menuBackground = new BackgroundImage("file:res/Background/menubg6.png");
 		mainPane.getChildren().add(menuBackground);
 	}
+	
+	
 	
 	private static void createLogo() {
 		ImageView logo = new ImageView("file:res/Logo/logo_design.png");
@@ -218,8 +241,9 @@ public class MenuController {
 	public static void gameOver() {
 		ScoreBoard.write(ScoreController.getScoresPath());
 		//Do to: Show GameOver Text
-		mainStage.close();
+		mainStage.close();		
 		intialiseStage();
+		showSubScene(scoreSubScene);
 	}
 
 	

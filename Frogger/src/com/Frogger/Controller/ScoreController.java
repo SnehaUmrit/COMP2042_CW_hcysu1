@@ -12,11 +12,11 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public class ScoreController {
 
-	private static final String SCORES_PATH = "res/HighScores.csv";
-	private static IntegerProperty score = new SimpleIntegerProperty(250);		
+	private static final String SCORES_PATH = "res/gamescores.csv";
+	private static IntegerProperty score = new SimpleIntegerProperty(300);
 	
 	public static ScoreView getScoreView() {
-		score = new SimpleIntegerProperty(250);
+		score = new SimpleIntegerProperty(300);
 		return new ScoreView();
 	}
 			
@@ -32,6 +32,10 @@ public class ScoreController {
 		return score.get();
 	}
 	
+	public static String getScoreString() {
+		return String.valueOf(score.get());
+	}
+	
 	public static StringBinding getBinding() {
 		return score.asString();
 		
@@ -43,10 +47,13 @@ public class ScoreController {
 		score.set(newScore);
 	}
 	
-	
+	/**
+	 * 
+	 * @return 
+	 */
 	public static String getHighScores() {
-		try {
-			return ScoreBoard.read(SCORES_PATH);
+		try {		
+			return ScoreBoard.read(SCORES_PATH);			
 		} catch (ParseException e) {
             System.out.println("Date in high scores file at path " + SCORES_PATH + " is incorrectly formatted.");
             return null;

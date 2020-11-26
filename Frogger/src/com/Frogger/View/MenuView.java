@@ -1,46 +1,40 @@
 package com.Frogger.View;
 
-import com.Frogger.Controller.AudioController;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import com.Frogger.Controller.ScoreController;
 import com.Frogger.Model.BackgroundImage;
 
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 
-public class MenuView extends GridPane {
+public class MenuView extends Pane {
 
-	
-
-
-	/**
-	 * 
-	 */
+	private final String FONT_PATH = "res/Font/Kenney Pixel.ttf";	
 	public MenuView() {		
-		//AudioController.playMenuAudio();
-		createMenuBackground();
-		createLogo();
-		
-		
+		LabelView scoreLabel = new LabelView(ScoreController.getHighScores());
+		scoreLabel.setLayoutX(0);
+		scoreLabel.setLayoutY(0);	
+		setTextFont(scoreLabel);
+		scoreLabel.setStyle("-fx-text-fill: WHITE;");
+		//getChildren().add(scoreLabel);
 	}
 	
 	
-	public void createMenuBackground() {
-		BackgroundImage menuBackground = new BackgroundImage("file:res/Background/menubg6.png");
-		add(menuBackground,1,1,1,1);
+	private void setTextFont(Label label) {
+		try {
+			label.setFont(Font.loadFont(new FileInputStream(FONT_PATH),45));
+		} catch(FileNotFoundException e) {
+			label.setFont(Font.font("Verdana",40));
+		}
 	}
-	
-	
-	public void createLogo() {
-		ImageView logo = new ImageView("file:res/Logo/logo_design.png");
-		//logo.setLayoutX(6);
-		//logo.setLayoutY(-5);
-		//logo.setFitHeight(600);
-		//logo.setFitWidth(600);
-		add(logo,2,2,1,1);
-		
-		
-		
-		
+
 		
 		
 	}
@@ -48,4 +42,4 @@ public class MenuView extends GridPane {
 
 	
 	
-}
+

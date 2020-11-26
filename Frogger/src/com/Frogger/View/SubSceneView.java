@@ -56,6 +56,11 @@ public class SubSceneView extends SubScene{
 		
 	}
 	
+	public AnchorPane getPane() {
+		return (AnchorPane) this.getRoot();
+	}
+	
+	
 
 
 

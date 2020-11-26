@@ -9,7 +9,7 @@ import javafx.scene.media.MediaPlayer;
 public class AudioController {
 
 	
-	private static final MediaPlayer MENU_AUDIO = new MediaPlayer(new Media(new File("res/Music/Frogger Main Song Theme (loop).mp3").toURI().toString()));
+	private static final MediaPlayer MENU_AUDIO = new MediaPlayer(new Media(new File("res/Music/NoCopyrightMenuMusic.mp3").toURI().toString()));
 	private static final MediaPlayer GAME_AUDIO = new MediaPlayer(new Media(new File("res/Music/Frogger Main Song Theme (loop).mp3").toURI().toString()));
 	
 	public static void playMenuAudio() {
