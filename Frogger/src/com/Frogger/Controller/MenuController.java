@@ -1,5 +1,7 @@
 package com.Frogger.Controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,7 @@ import com.Frogger.View.SubSceneView;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -21,6 +24,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class MenuController {
@@ -38,8 +42,8 @@ public class MenuController {
 	private static SubSceneView sceneToHide;
 	private static MenuView menuView;
 	
-	private static final int MENU_BUTTONS_STARTX = 260;
-	private static final int MENU_BUTTONS_STARTY = 450;
+	private static final int MENU_BUTTONS_STARTX = 160;
+	private static final int MENU_BUTTONS_STARTY = 425;
 	
 	private static DropShadow drop;
 	
@@ -82,14 +86,27 @@ public class MenuController {
 	}
 
 	public static void createHelpSubScenes() {
-
 		helpSubScene = new SubSceneView();
 		mainPane.getChildren().add(helpSubScene);
-		Label helpLabel = new Label(" Please help yourself");
-		helpLabel.setLayoutX(20);
+		LabelView helpLabel = new LabelView("HELP");
+		helpLabel.setLayoutX(30);
 		helpLabel.setLayoutY(20);
-		helpLabel.setStyle("-fx-text-fill: WHITE;");
+		helpLabel.setStyle("-fx-text-fill: GREEN;");
 		helpSubScene.getPane().getChildren().add(helpLabel);
+		
+		Label help = new Label("- PRESS W,A,S,D KEYS TO MOVE FROGGY\n"
+								+ "- AVOID VEHICES AND SNAKES\n"
+								+ "- GRAB A FLY TO GET EXTRA POINYS\n"
+								+ "- BE QUICK TO GAIN EXTRA TIME BONUS\n"
+								+ "- CROCODILES CAN BE SAFE RIDES, BUT \n"
+								+ "! ! ! BEWARE WHEN THEY OPEN THEIR MOUTH ! ! !");
+		help.setLayoutX(40);
+		help.setLayoutY(74);
+		setTextFont(help);
+
+		help.setStyle("-fx-text-fill: BLACK;");
+		helpSubScene.getPane().getChildren().add(help);
+		
 		
 	}
 
@@ -98,17 +115,25 @@ public class MenuController {
 	
 		scoreSubScene = new SubSceneView();
 		mainPane.getChildren().add(scoreSubScene);
-		Label scoreLabel = new Label(ScoreController.getHighScores());
-		scoreLabel.setLayoutX(20);
-		scoreLabel.setLayoutY(20);		
-		scoreLabel.setStyle("-fx-text-fill: WHITE;");
-		scoreSubScene.getPane().getChildren().add(scoreLabel);	
+		LabelView scoreLabel = new LabelView("HIGH SCORES");
+		scoreLabel.setLayoutX(30);
+		scoreLabel.setLayoutY(20);
+		scoreLabel.setStyle("-fx-text-fill: GREEN;");
+		scoreSubScene.getPane().getChildren().add(scoreLabel);
+		
+		Label score = new Label(ScoreController.getHighScores());
+		score.setLayoutX(20);
+		score.setLayoutY(20);		
+		score.setStyle("-fx-text-fill: WHITE;");
+		
+		
+		scoreSubScene.getPane().getChildren().add(score);	
 		
 	}
 
 	private static void addMenuButton(ButtonView button) {
 		button.setLayoutX(MENU_BUTTONS_STARTX);
-		button.setLayoutY(MENU_BUTTONS_STARTY + menuButtons.size()*70);
+		button.setLayoutY(MENU_BUTTONS_STARTY + menuButtons.size()*65);
 		menuButtons.add(button);
 		mainPane.getChildren().add(button);
 	}
@@ -199,26 +224,25 @@ public class MenuController {
 	
 	
 	private static void createBackground() {
-		BackgroundImage menuBackground = new BackgroundImage("file:res/Background/menubg6.png");
+
+		BackgroundImage menuBackground = new BackgroundImage("file:res/Background/menu_bg11.png");
 		mainPane.getChildren().add(menuBackground);
+		
 	}
 	
-	
-	
 	private static void createLogo() {
-		ImageView logo = new ImageView("file:res/Logo/logo_design.png");
-		logo.setLayoutX(6);
-		logo.setLayoutY(-5);
-		logo.setFitHeight(600);
-		logo.setFitWidth(600);
-
+		ImageView logo = new ImageView("file:res/Logo/classic_logo.png");
+		logo.setLayoutX(75);
+		logo.setLayoutY(100);
+		logo.setFitHeight(100);
+		logo.setFitWidth(450);
 		
 		logo.setOnMouseEntered(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
 				drop = new DropShadow();
-				drop.setColor(Color.DEEPPINK);
-				drop.setRadius(20);
+				drop.setColor(Color.WHITE);
+				drop.setRadius(10);
 				logo.setEffect(drop);
 				
 			}			
@@ -233,10 +257,19 @@ public class MenuController {
 			}			
 		});
 		
+		ImageView froggy = new ImageView("file:res/Logo/frog.png");
+		froggy.setLayoutX(185);
+		froggy.setLayoutY(195);
+		froggy.setFitWidth(250);
+		froggy.setFitHeight(250);
+		
+		mainPane.getChildren().add(froggy);
 		mainPane.getChildren().add(logo);
 		
 	}
 
+	
+	
 
 	public static void gameOver() {
 		ScoreBoard.write(ScoreController.getScoresPath());
@@ -247,7 +280,13 @@ public class MenuController {
 	}
 
 	
-	
+	private static void setTextFont(Label label) {
+		try {
+			label.setFont(Font.loadFont(new FileInputStream("res/Font/Kenney Pixel.ttf"),30));
+		} catch(FileNotFoundException e) {
+			label.setFont(Font.font("Verdana",30));
+		}
+	}
 	
 	
 

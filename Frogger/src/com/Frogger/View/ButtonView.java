@@ -13,16 +13,20 @@ import javafx.scene.text.Font;
 
 public class ButtonView extends Button{
 	
-	private final String FONT_PATH = "res/Font/Kenney_Future_Narrow.ttf";
-	private final String BUTTON_PRESSED_STYLE = "-fx-background-color:transparent";
-	private final String BUTTON_FREE_STYLE = "-fx-background-color:transparent";
+	
+	//res/Font/Kenney_Future_Narrow.ttf
+	private final String FONT_PATH = "res/Font/Kenney Pixel.ttf";
+	//private final String BUTTON_PRESSED_STYLE = "-fx-background-color:transparent; -fx-border-color:white;";
+	private final String BUTTON_PRESSED_STYLE = "-fx-background-color:transparent;";
+	private final String BUTTON_FREE_STYLE = "-fx-background-color: transparent;"; 
 	DropShadow drop;
+	
+	
 	/**
 	 * Constructor to call methods
 	 * @param text
 	 */
-	public ButtonView(String text) {
-		
+	public ButtonView(String text) {	
 		setText(text);
 		setTextFill(Color.WHITE);
 		setButtonFont();	
@@ -42,7 +46,7 @@ public class ButtonView extends Button{
 	 */
 	private void setButtonFont() {
 		try {
-			setFont(Font.loadFont(new FileInputStream(FONT_PATH),40));
+			setFont(Font.loadFont(new FileInputStream(FONT_PATH),60));
 		} catch(FileNotFoundException e) {
 			setFont(Font.font("Verdana",40));
 		}
@@ -50,14 +54,14 @@ public class ButtonView extends Button{
 	
 	private void setButtonPressedStyle() {
 		setStyle(BUTTON_PRESSED_STYLE);
-		//setPrefHeight(15);
+		setPrefHeight(100);
 		//setLayoutX(300);
 		setLayoutY(getLayoutY()+5);
 	}
 	
 	private void setButtonReleasedStyle() {
 		setStyle(BUTTON_FREE_STYLE);
-		//setPrefHeight(15);
+		setPrefHeight(100);
 		//setLayoutX(300);
 		setLayoutY(getLayoutY()-5);
 	}

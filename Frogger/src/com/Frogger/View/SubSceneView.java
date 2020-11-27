@@ -1,9 +1,6 @@
 package com.Frogger.View;
 
 
-
-
-
 import javafx.animation.TranslateTransition;
 
 import javafx.scene.SubScene;
@@ -13,6 +10,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class SubSceneView extends SubScene{
@@ -23,17 +21,20 @@ public class SubSceneView extends SubScene{
 	
 	
 	public SubSceneView() {
-		super(new AnchorPane(), 450, 230);
-		prefWidth(450);
-		prefHeight(220);		
-		BackgroundImage image = new BackgroundImage(new Image(BACKGROUND_IMAGE,450,230,false,true),
+		super(new AnchorPane(), 460, 245);
+		prefWidth(460); 
+		prefHeight(245);		
+
+		BackgroundImage image = new BackgroundImage(new Image(BACKGROUND_IMAGE,460,245,false,true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, null);
 		
 		AnchorPane root2 = (AnchorPane)this.getRoot();
+
 		root2.setBackground(new Background(image));
 		
 		setLayoutX(600);
-		setLayoutY(180);
+		setLayoutY(190);
+
 
 	}
 	
@@ -46,7 +47,7 @@ public class SubSceneView extends SubScene{
 		
 		
 		if(isHidden) {
-			transition.setToX(-515);
+			transition.setToX(-523);
 			isHidden = false;
 		} else {
 			transition.setToX(0);
