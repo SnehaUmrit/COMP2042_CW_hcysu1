@@ -12,7 +12,9 @@ package com.Frogger.Model;
  * 
  */
 public class Level {
-
+	
+	private static final int START_Y = 719;
+	private static final int START_X = 300;
 	/**
 	 * Creating a static array of type actor named LEVEL1
 	 * To generate Level 1 obstacles 
@@ -22,7 +24,9 @@ public class Level {
 	 */
 	private static final Actor[] LEVEL1 = new Actor[] {
 		
-		//street row 1
+			
+		
+		/*//street row 1
 		new Obstacle(0,645,"long blue truck",1),	
 		new Obstacle(500,645,"long blue truck",1),
 		
@@ -36,7 +40,7 @@ public class Level {
 		new Obstacle(0,510,"short white truck",1),
 		new Obstacle(300,510,"short white truck",1),
 		new Obstacle(600,510,"short white truck",1),
-		
+		*/
 		//street row 4
 		new Obstacle(400,445,"race car",-3),
 		new Obstacle(500,445,"race car",-3),
@@ -64,7 +68,9 @@ public class Level {
 
 		//river row 5
 		new Log(0,120,300,0.75),
-		new Log(400,120,300,0.75)
+		new Log(400,120,300,0.75),
+		
+		new Animal(START_X,START_Y)
 		
 	};
 	
@@ -78,7 +84,8 @@ public class Level {
 	 */
 	private static final Actor[] LEVEL2 = new Actor[] {
 			
-			//street row 1
+			
+		/*	//street row 1
 			new Obstacle(0,645,"long blue truck",1),	
 			new Obstacle(500,645,"long blue truck",1),
 			
@@ -96,7 +103,7 @@ public class Level {
 			//street row 4
 			new Obstacle(400,445,"race car",-3),
 			new Obstacle(500,445,"race car",-3),
-			
+			*/
 			//Appearance of snake on median
 			new Snake(200,367,-1),
 			
@@ -121,8 +128,10 @@ public class Level {
 
 			//river row 5
 			new Log(0,120,300,0.75),
-			new Log(400,120,300,0.75)
+			new Log(400,120,300,0.75),
 			
+			
+			new Animal(START_X,START_Y)
 	};
 	
 		
@@ -135,7 +144,7 @@ public class Level {
 	 */
 	private static final Actor[] LEVEL3 = new Actor[] {
 		
-			//street row 1
+			/*//street row 1
 			new Obstacle(0,660,"long blue truck",1),	
 			new Obstacle(500,660,"long blue truck",1),
 			
@@ -158,7 +167,7 @@ public class Level {
 			new Obstacle(300,410,"short white truck",1),
 			new Obstacle(600,410,"short white truck",1),
 
-			//Safe Median
+			//Safe Median*/
 			
 			//river row 1
 			new WetTurtle(200,310,-1),
@@ -181,7 +190,9 @@ public class Level {
 
 			//river row 5
 			new Log(0,120,300,0.75),
-			new Log(400,120,300,0.75)
+			new Log(400,120,300,0.75),
+			
+			new Animal(START_X,START_Y)
 			
 			
 			
@@ -197,7 +208,7 @@ public class Level {
 	 */
 	private static final Actor[] LEVEL4 = new Actor[] {
 			
-			//street row 1
+		/*	//street row 1
 			new Obstacle(0,660,"long blue truck",1),	
 			new Obstacle(500,660,"long blue truck",1),
 			
@@ -220,7 +231,7 @@ public class Level {
 			new Obstacle(300,410,"short white truck",1),
 			new Obstacle(600,410,"short white truck",1),
 			
-			//Safe Median
+			//Safe Median*/
 			
 			//river row 1
 			new WetTurtle(200,310,-1),
@@ -244,7 +255,9 @@ public class Level {
 			//river row 5
 			new Log(0,120,300,0.75),
 			new Log(360,120,150,0.75),
-			new UnsafeCrocodile(600,105,0.75)
+			new UnsafeCrocodile(600,105,0.75),
+			
+			new Animal(START_X,START_Y)
 			
 	};
 	
@@ -257,7 +270,7 @@ public class Level {
 	 */
 	private static final Actor[] LEVEL5 = new Actor[] {
 			
-			//street row 1
+			/*//street row 1
 			new Obstacle(0,660,"long blue truck",1),	
 			new Obstacle(500,660,"long blue truck",1),
 			
@@ -281,7 +294,7 @@ public class Level {
 			new Obstacle(600,410,"short white truck",1),
 			
 			//Appearance of snake on median
-			new Snake(200,367,-1),
+			new Snake(200,367,-1),*/
 			
 			//river row 1
 			new WetTurtle(200,310,-1),
@@ -305,7 +318,9 @@ public class Level {
 			//river row 5
 			new Log(0,120,300,0.75),
 			new Log(360,120,150,0.75),
-			new UnsafeCrocodile(600,105,0.75)
+			new UnsafeCrocodile(600,105,0.75),
+			
+			new Animal(START_X,START_Y)
 			
 			
 			

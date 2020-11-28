@@ -3,7 +3,7 @@ package com.Frogger.View;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import com.Frogger.Controller.ScoreController;
+import com.Frogger.Controller.HighscoreController;
 
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -19,7 +19,7 @@ public class ScoreView extends Pane{
 	public ScoreView() {
 
         Label currentScore = new Label();
-        currentScore.textProperty().bind(ScoreController.getBinding());
+        currentScore.textProperty().bind(HighscoreController.getBinding());
         currentScore.setLayoutX(317);
         currentScore.setLayoutY(2.5);
         setScoreFont(currentScore);

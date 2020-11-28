@@ -4,7 +4,7 @@ package com.Frogger.View;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import com.Frogger.Controller.ScoreController;
+import com.Frogger.Controller.HighscoreController;
 import com.Frogger.Model.BackgroundImage;
 
 import javafx.scene.control.Label;
@@ -18,7 +18,7 @@ public class MenuView extends Pane {
 
 	private final String FONT_PATH = "res/Font/Kenney Pixel.ttf";	
 	public MenuView() {		
-		LabelView scoreLabel = new LabelView(ScoreController.getHighScores());
+		LabelView scoreLabel = new LabelView(HighscoreController.getHighScores());
 		scoreLabel.setLayoutX(0);
 		scoreLabel.setLayoutY(0);	
 		setTextFont(scoreLabel);

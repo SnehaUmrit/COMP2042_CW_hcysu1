@@ -11,25 +11,25 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.*;
 
-import com.Frogger.Controller.ScoreController;
+import com.Frogger.Controller.HighscoreController;
 
-public class ScoreBoard {
+public class HighscoreBoard {
 	
 	public static ArrayList<BoardInput> board;
 	
 	private static class BoardInput implements Comparable<BoardInput>{
-		String name;
+		//String name;
 		int score;
-		Date date;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yy");
+		//Date date;
+		//SimpleDateFormat dateFormat = new SimpleDateFormat("dd MM yy");
 		
-		public BoardInput(String[] column) throws ParseException{
-            if (column[0].length() > 7)
+		public BoardInput(String column) throws ParseException{
+            /*if (column[0].length() > 7)
                 this.name = column[0].substring(0,7);
             else
-                this.name = column[0];
-            this.score = Integer.parseInt(column[1]);
-            this.date = new SimpleDateFormat("dd-MM-yyyy").parse(column[2]);
+                this.name = column[0];*/
+            this.score = Integer.parseInt(column);
+            //this.date = new SimpleDateFormat("dd-MM-yyyy").parse(column[2]);
 			}
 		
 		@Override
@@ -39,8 +39,8 @@ public class ScoreBoard {
 		
 		@Override
 		public String toString() {
-			return '\n' + this.name + '\t' + this.score + '\t' + dateFormat.format(this.date);
-			
+			//return '\n' + this.name + '\t' + this.score + '\t' + dateFormat.format(this.date);
+			return '\n' + String.valueOf(this.score);
 		}
 		
 	}
@@ -55,7 +55,7 @@ public class ScoreBoard {
 			board = new ArrayList<>();
 			String line;
 			while ((line = reader.readLine()) != null) {
-				board.add(new BoardInput(line.split(",")));				
+				board.add(new BoardInput(line));				
 			}
 			Collections.sort(board);
 			for (BoardInput bi : board) {
@@ -72,7 +72,8 @@ public class ScoreBoard {
 	public static void write (String scoresPath) {
 		try {
             FileWriter writer = new FileWriter(scoresPath, true);
-            String line = '\n' + "Frog" + ',' + ScoreController.getScore() + ',' + java.time.LocalDate.now();           
+            //String line = '\n' + "Frog" + ',' + ScoreController.getScore() + ',' + java.time.LocalDate.now();           
+            String line = '\n' + HighscoreController.getScoreString();
             writer.write(line);
             writer.flush();
             writer.close();

@@ -8,13 +8,13 @@ import com.Frogger.Controller.AudioController;
 import com.Frogger.Controller.EndController;
 import com.Frogger.Controller.LivesController;
 import com.Frogger.Controller.MenuController;
-import com.Frogger.Controller.ScoreController;
+import com.Frogger.Controller.HighscoreController;
 import com.Frogger.Controller.TimeController;
 
 import javafx.animation.PauseTransition;
-import javafx.event.EventHandler;
+
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+
 import javafx.util.Duration;
 
 public class Animal extends AnimatedObject {
@@ -26,12 +26,12 @@ public class Animal extends AnimatedObject {
 	private final PauseTransition pause = new PauseTransition(Duration.millis(120));
 	private boolean noMove, carDeath, waterDeath = false;
 	private static boolean finished;
-	
-	private double w = 800.0;
+
 	boolean changeScore = false;
 	
-	public Animal() {
-		super(300, START_Y, 38, 38, new String[] {
+	public Animal(int x, int y) {
+		
+		super(x, y, 38, 38, new String[] {
 				"file:res/Sprites/froggerUp.png",       //0
 				"file:res/Sprites/froggerLeft.png",     //1
 				"file:res/Sprites/froggerDown.png",		//2
@@ -100,8 +100,9 @@ public class Animal extends AnimatedObject {
 
 	}
 	
-	private void setState(int state) {
+	private void setState(int state) {		
 		setImage(this.states[state]);
+
 	}
 
 
@@ -112,7 +113,7 @@ public class Animal extends AnimatedObject {
 			carDeath = waterDeath = noMove = false;
 			ticks = 0;
 			setState(0);
-			ScoreController.changeScore(points);
+			HighscoreController.changeScore(points);
 			TimeController.reset();
 			
 		});
@@ -162,7 +163,7 @@ public class Animal extends AnimatedObject {
 					LivesController.removeFrogLife();
 				} else if (object instanceof Insect && !((Insect) object).isIntersecting()) {
 					((Insect) object).intersect();
-					ScoreController.changeScore(INSECT_BONUS);
+					HighscoreController.changeScore(INSECT_BONUS);
 				} else if (object instanceof Log)
 					move(((Log) (object)).actorSpeed,0);
 				

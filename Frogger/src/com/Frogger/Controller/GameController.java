@@ -20,21 +20,18 @@ public class GameController {
 	
 	private static  GameView gameView;
 	private static final Random RANDOM = new Random();
+
 	private static int bonus = 0;
 	
 	
 	static final Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(FRAMERATE), event -> {
-		
-		
-		
-		if (EndController.levelCompleted()) {
+	if (EndController.levelCompleted()) {
 			EndController.newLevel();
 			gameView.getChildren().removeAll(LevelController.getCurrentLevel());
-			gameView.getChildren().addAll(LevelController.getNextLevel());
-			
+			gameView.getChildren().addAll(LevelController.getNextLevel());	
+	
 		}
-		
-		
+
 		
 		List<IntersectingObject> objects = getObjects(IntersectingObject.class);
 		for (IntersectingObject object : objects) {
@@ -48,8 +45,7 @@ public class GameController {
 			if (LevelController.getLevel() == 3 || LevelController.getLevel() == 4 || LevelController.getLevel() == 5) {
 				EndController.flipCrocodile();
 			}
-			
-			
+
 		} else if (bonus < 2 && chance > 0.5 && chance < 0.5005) {
 			chance = RANDOM.nextDouble();
 			int componentY = RANDOM.nextInt(10);
@@ -59,11 +55,8 @@ public class GameController {
 			if (LevelController.getLevel() == 1 || LevelController.getLevel() == 2 || LevelController.getLevel() == 3) {
 				gameView.getChildren().add(new Insect(x,y));
 				bonus++;
-			}			
-			
+			}						
 		}
-		
-		
 	}));
 	
 	
@@ -76,8 +69,7 @@ public class GameController {
 					object.getOnKeyPressed().handle(event);
 				}
 			}
-		}));
-		
+		}));		
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
 		return gameView;

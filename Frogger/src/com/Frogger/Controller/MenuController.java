@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.Frogger.Model.Animal;
 import com.Frogger.Model.BackgroundImage;
-import com.Frogger.Model.ScoreBoard;
+import com.Frogger.Model.HighscoreBoard;
 import com.Frogger.View.ButtonView;
 import com.Frogger.View.GameView;
 import com.Frogger.View.LabelView;
@@ -40,7 +40,7 @@ public class MenuController {
 	private static SubSceneView scoreSubScene;
 	private static SubSceneView helpSubScene;
 	private static SubSceneView sceneToHide;
-	private static MenuView menuView;
+	//private static MenuView menuView;
 	
 	private static final int MENU_BUTTONS_STARTX = 160;
 	private static final int MENU_BUTTONS_STARTY = 425;
@@ -105,9 +105,7 @@ public class MenuController {
 		setTextFont(help);
 
 		help.setStyle("-fx-text-fill: BLACK;");
-		helpSubScene.getPane().getChildren().add(help);
-		
-		
+		helpSubScene.getPane().getChildren().add(help);		
 	}
 
 	
@@ -121,10 +119,11 @@ public class MenuController {
 		scoreLabel.setStyle("-fx-text-fill: GREEN;");
 		scoreSubScene.getPane().getChildren().add(scoreLabel);
 		
-		Label score = new Label(ScoreController.getHighScores());
-		score.setLayoutX(20);
-		score.setLayoutY(20);		
-		score.setStyle("-fx-text-fill: WHITE;");
+		Label score = new Label(HighscoreController.getHighScores());
+		score.setLayoutX(200);
+		score.setLayoutY(25);	
+		setTextFont(score);
+		score.setStyle("-fx-text-fill: BLACK;");
 		
 		
 		scoreSubScene.getPane().getChildren().add(score);	
@@ -159,7 +158,7 @@ public class MenuController {
 			public void handle(ActionEvent event) {
 				
 				GameView gameView = GameController.getGame();
-				gameView.getChildren().add(new Animal());
+				//gameView.getChildren().add(new Animal());
 				
 				gameScene = new Scene(gameView,WIDTH,HEIGHT);
 				mainStage.setScene(gameScene);
@@ -268,12 +267,8 @@ public class MenuController {
 		
 	}
 
-	
-	
-
 	public static void gameOver() {
-		ScoreBoard.write(ScoreController.getScoresPath());
-		//Do to: Show GameOver Text
+		HighscoreBoard.write(HighscoreController.getScoresPath());
 		mainStage.close();		
 		intialiseStage();
 		showSubScene(scoreSubScene);
@@ -287,10 +282,5 @@ public class MenuController {
 			label.setFont(Font.font("Verdana",30));
 		}
 	}
-	
-	
-
-	
-	
 
 }

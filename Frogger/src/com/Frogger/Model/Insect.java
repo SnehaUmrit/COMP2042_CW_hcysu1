@@ -21,5 +21,6 @@ public class Insect extends IntersectingObject{
 	public void intersect() {
 		setImage(bonus);
 		intersects = true;
+		//wait for a few seconds and hide
 	}
 }

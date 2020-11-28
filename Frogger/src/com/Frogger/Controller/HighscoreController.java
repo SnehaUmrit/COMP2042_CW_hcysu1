@@ -2,7 +2,7 @@ package com.Frogger.Controller;
 
 import java.text.ParseException;
 
-import com.Frogger.Model.ScoreBoard;
+import com.Frogger.Model.HighscoreBoard;
 import com.Frogger.View.ScoreView;
 
 import javafx.beans.binding.StringBinding;
@@ -10,9 +10,9 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 
-public class ScoreController {
+public class HighscoreController {
 
-	private static final String SCORES_PATH = "res/gamescores.csv";
+	private static final String SCORES_PATH = "res/HighScoreBoard.csv";
 	private static IntegerProperty score = new SimpleIntegerProperty(300);
 	
 	public static ScoreView getScoreView() {
@@ -25,7 +25,7 @@ public class ScoreController {
 	}
 	
 	public static String getMaxScore() {
-		return String.valueOf(ScoreBoard.getMaxScore());
+		return String.valueOf(HighscoreBoard.getMaxScore());
 	}
 	
 	public static int getScore() {
@@ -53,9 +53,9 @@ public class ScoreController {
 	 */
 	public static String getHighScores() {
 		try {		
-			return ScoreBoard.read(SCORES_PATH);			
+			return HighscoreBoard.read(SCORES_PATH);			
 		} catch (ParseException e) {
-            System.out.println("Date in high scores file at path " + SCORES_PATH + " is incorrectly formatted.");
+            //System.out.println("Date in high scores file at path " + SCORES_PATH + " is incorrectly formatted.");
             return null;
 		}
 	}

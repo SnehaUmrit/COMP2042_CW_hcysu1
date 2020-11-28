@@ -33,7 +33,7 @@ public class LevelController {
      * @return the elements of array LEVEL1
      */
 	public static Actor[] getStartingLevel() {
-		LEVEL_VALUE.setValue(1);
+		LEVEL_VALUE.setValue(5);
 		return getCurrentLevel();
 	}
 	
@@ -47,6 +47,7 @@ public class LevelController {
 	}
 	
 	public static Actor[] getNextLevel() {
+		
 		LEVEL_VALUE.setValue(LEVEL_VALUE.get() + 1);
 		if (LEVEL_VALUE.get() > MAX_LEVEL) {
 			MenuController.gameOver();

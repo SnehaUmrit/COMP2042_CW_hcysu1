@@ -7,7 +7,7 @@ public class TimeController {
 	private static TimeView timeView;
 	
 	public static TimeView getTimeView() {
-		timeView = new TimeView(60);
+		timeView = new TimeView(40);
 		return timeView;
 	}
 	
