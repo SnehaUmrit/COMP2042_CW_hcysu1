@@ -33,7 +33,7 @@ public class LevelController {
      * @return the elements of array LEVEL1
      */
 	public static Actor[] getStartingLevel() {
-		LEVEL_VALUE.setValue(5);
+		LEVEL_VALUE.setValue(1);
 		return getCurrentLevel();
 	}
 	

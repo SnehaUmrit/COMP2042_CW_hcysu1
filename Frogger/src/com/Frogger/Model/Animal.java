@@ -55,6 +55,7 @@ public class Animal extends AnimatedObject {
 		setOnKeyPressed(KeyEvent -> {
 			if (!noMove) {
 				if (KeyEvent.getCode() == KeyCode.W) {
+					AudioController.playHopAudio();					
 					setState(4);
 					move(0,-CONSTANT);
 					pause.setOnFinished(actionEvent ->{
@@ -64,6 +65,7 @@ public class Animal extends AnimatedObject {
 				}
 				
 				if (KeyEvent.getCode() == KeyCode.A) {
+					AudioController.playHopAudio();
 					setState(5);
 					move(-CONSTANT,0);
 					pause.setOnFinished(actionEvent -> {
@@ -73,6 +75,7 @@ public class Animal extends AnimatedObject {
 				}
 				
 				if (KeyEvent.getCode() == KeyCode.S) {
+					AudioController.playHopAudio();
 					setState(6);
 					move(0,CONSTANT);
 					pause.setOnFinished(actionEvent -> {
@@ -82,6 +85,7 @@ public class Animal extends AnimatedObject {
 				}
 				
 				if (KeyEvent.getCode() == KeyCode.D) {
+					AudioController.playHopAudio();
 					setState(7);
 					move(CONSTANT,0);
 					pause.setOnFinished(actionEvent -> {
@@ -141,11 +145,17 @@ public class Animal extends AnimatedObject {
 			setX(0);
 		
 		
-		if (carDeath) 
-			animate(Arrays.copyOfRange(states,8,12),20);
+		if (carDeath) {
+			AudioController.playStreetDeathAudio();
+			animate(Arrays.copyOfRange(states,8,12),20);		
+		}
 			
-		else if (waterDeath) 
+			
+		else if (waterDeath) {
+			AudioController.playWaterDeathAudio();
 			animate(Arrays.copyOfRange(states, 12, 16),20);
+		}
+			
 		
 		else if (!noMove) {
 			List<IntersectingObject> objects = getIntersectingObjects();
@@ -163,14 +173,17 @@ public class Animal extends AnimatedObject {
 					LivesController.removeFrogLife();
 				} else if (object instanceof Insect && !((Insect) object).isIntersecting()) {
 					((Insect) object).intersect();
+					AudioController.playBonusAudio();
 					HighscoreController.changeScore(INSECT_BONUS);
 				} else if (object instanceof Log)
 					move(((Log) (object)).actorSpeed,0);
 				
 				
 				else if (object instanceof WetTurtle) {
-					if (((WetTurtle) object).isSunk())
+					if (((WetTurtle) object).isSunk()) {
 						waterDeath = noMove =  true;
+						LivesController.removeFrogLife();
+					}
 					else 
 						move(((WetTurtle) (object)).actorSpeed,0);
 				
@@ -179,8 +192,11 @@ public class Animal extends AnimatedObject {
 				
 				
 				else if (object instanceof UnsafeCrocodile) {
-					if (((UnsafeCrocodile) object).isOpen())
+					if (((UnsafeCrocodile) object).isOpen()) {
 						waterDeath = noMove =  true;
+						LivesController.removeFrogLife();
+					}
+						
 					else 
 						move(((UnsafeCrocodile) (object)).actorSpeed,0);
 					
@@ -194,7 +210,8 @@ public class Animal extends AnimatedObject {
 						LivesController.removeFrogLife();
 					} else if (EndController.inactive(object)) {
 						noMove = true;
-						EndController.activate(object);
+						AudioController.playEndAudio();
+						EndController.activate(object);						
 						respawn(100);
 					} 
 				}
