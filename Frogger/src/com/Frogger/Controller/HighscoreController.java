@@ -13,10 +13,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class HighscoreController {
 
 	private static final String SCORES_PATH = "res/HighScoreBoard.csv";
-	private static IntegerProperty score = new SimpleIntegerProperty(300);
+	private static IntegerProperty score = new SimpleIntegerProperty(0);
 	
 	public static ScoreView getScoreView() {
-		score = new SimpleIntegerProperty(300);
+		score = new SimpleIntegerProperty(0);
 		return new ScoreView();
 	}
 			
@@ -41,7 +41,7 @@ public class HighscoreController {
 		
 	}
 	
-	public static void changeScore(int points) {
+	public static void changeScore(double points) {
 		int newScore = score.get();
 		newScore += (points < 0) ? points : points * (1 + TimeController.getProgressbarValue());
 		score.set(newScore);

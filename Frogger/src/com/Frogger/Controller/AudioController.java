@@ -16,8 +16,10 @@ public class AudioController {
 	private static final MediaPlayer HOP_AUDIO = new MediaPlayer(new Media(new File("res/Music/sound-frogger-hop.wav").toURI().toString()));
 	private static final MediaPlayer STREET_DEATH_AUDIO = new MediaPlayer(new Media(new File("res/Music/sound-frogger-squash.wav").toURI().toString()));
 	private static final MediaPlayer WATER_DEATH_AUDIO = new MediaPlayer(new Media(new File("res/Music/sound-frogger-plunk.wav").toURI().toString()));
-	private static final MediaPlayer BONUS_AUDIO = new MediaPlayer(new Media(new File("res/Music/sound-frogger-coin-in.wav").toURI().toString()));
+	private static final MediaPlayer BONUS_AUDIO = new MediaPlayer(new Media(new File("res/Music/bonus.wav").toURI().toString()));
 	private static final MediaPlayer END_AUDIO = new MediaPlayer(new Media(new File("res/Music/sound-frogger-extra.wav").toURI().toString()));
+	private static final MediaPlayer WIN_AUDIO = new MediaPlayer(new Media(new File("res/Music/win.wav").toURI().toString()));
+	private static final MediaPlayer GAMEOVER_AUDIO = new MediaPlayer(new Media(new File("res/Music/gameover.wav").toURI().toString()));
 	
 	
 	public static void playMenuAudio() {
@@ -62,5 +64,16 @@ public class AudioController {
 		END_AUDIO.play();
 	}
 	
+	
+	public static void playWinAudio() {
+		WIN_AUDIO.seek(Duration.ZERO);
+		WIN_AUDIO.play();
+	}
+	
+	
+	public static void playGameOverAudio() {
+		GAMEOVER_AUDIO.seek(Duration.ZERO);
+		GAMEOVER_AUDIO.play();
+	}
 	
 }

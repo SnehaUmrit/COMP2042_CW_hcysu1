@@ -49,14 +49,11 @@ public class LevelController {
 	public static Actor[] getNextLevel() {
 		
 		LEVEL_VALUE.setValue(LEVEL_VALUE.get() + 1);
-		if (LEVEL_VALUE.get() > MAX_LEVEL) {
-			MenuController.gameOver();
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("GAME COMPLETE");
-			alert.setHeaderText(null);
-			alert.setContentText("YAY, YOU WON!!");
-			alert.showAndWait();
-			
+		
+		//When all levels have been completed and the game is won
+		if (LEVEL_VALUE.get() > MAX_LEVEL) {		
+			AudioController.playWinAudio();
+			MenuController.gameWon();
 		}
 		return getCurrentLevel();
 	}

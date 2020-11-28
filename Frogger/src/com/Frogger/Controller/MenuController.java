@@ -18,7 +18,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -40,7 +42,7 @@ public class MenuController {
 	private static SubSceneView scoreSubScene;
 	private static SubSceneView helpSubScene;
 	private static SubSceneView sceneToHide;
-	//private static MenuView menuView;
+
 	
 	private static final int MENU_BUTTONS_STARTX = 160;
 	private static final int MENU_BUTTONS_STARTY = 425;
@@ -121,11 +123,9 @@ public class MenuController {
 		
 		Label score = new Label(HighscoreController.getHighScores());
 		score.setLayoutX(200);
-		score.setLayoutY(25);	
+		score.setLayoutY(20);	
 		setTextFont(score);
 		score.setStyle("-fx-text-fill: BLACK;");
-		
-		
 		scoreSubScene.getPane().getChildren().add(score);	
 		
 	}
@@ -269,11 +269,31 @@ public class MenuController {
 
 	public static void gameOver() {
 		HighscoreBoard.write(HighscoreController.getScoresPath());
-		mainStage.close();		
+		mainStage.close();
 		intialiseStage();
+		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("GAME OVER");
+		alert.setHeaderText("YOUR SCORE IS "+HighscoreController.getScore()+ "!");
+		alert.setContentText("SORRY, YOU LOST, PRESS OK TO SEE SCORE BOARD");
+		alert.show();		
+		showSubScene(scoreSubScene);
+		
+	}
+	
+	public static void gameWon() {
+		HighscoreBoard.write(HighscoreController.getScoresPath());
+		mainStage.close();
+		intialiseStage();
+		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("GAME COMPLETE");
+		alert.setHeaderText("YOUR SCORE IS "+HighscoreController.getScore()+ " !");
+		alert.setContentText("YAY, YOU WON!!, PRESS OK TO SEE SCORE BOARD");
+		alert.show();
 		showSubScene(scoreSubScene);
 	}
-
+	
 	
 	private static void setTextFont(Label label) {
 		try {

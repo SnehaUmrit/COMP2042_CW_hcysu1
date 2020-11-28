@@ -15,7 +15,7 @@ import javafx.util.Duration;
 
 public class SubSceneView extends SubScene{
 
-	private  static final String FONT_PATH = "res/Font/Kenney_Future_Narrow.ttf";
+	//private  static final String FONT_PATH = "res/Font/Kenney_Future_Narrow.ttf";
 	private static final String BACKGROUND_IMAGE = "file:res/Buttons/green_panel.png";
 	private boolean isHidden = true;
 	
@@ -23,9 +23,9 @@ public class SubSceneView extends SubScene{
 	public SubSceneView() {
 		super(new AnchorPane(), 460, 245);
 		prefWidth(460); 
-		prefHeight(245);		
+		prefHeight(250);		
 
-		BackgroundImage image = new BackgroundImage(new Image(BACKGROUND_IMAGE,460,245,false,true),
+		BackgroundImage image = new BackgroundImage(new Image(BACKGROUND_IMAGE,460,250,false,true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, null);
 		
 		AnchorPane root2 = (AnchorPane)this.getRoot();

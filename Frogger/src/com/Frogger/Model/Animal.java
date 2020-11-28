@@ -12,9 +12,9 @@ import com.Frogger.Controller.HighscoreController;
 import com.Frogger.Controller.TimeController;
 
 import javafx.animation.PauseTransition;
-
+import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
-
+import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
 public class Animal extends AnimatedObject {
@@ -55,10 +55,12 @@ public class Animal extends AnimatedObject {
 		setOnKeyPressed(KeyEvent -> {
 			if (!noMove) {
 				if (KeyEvent.getCode() == KeyCode.W) {
-					AudioController.playHopAudio();					
+					AudioController.playHopAudio();	
+					
 					setState(4);
 					move(0,-CONSTANT);
 					pause.setOnFinished(actionEvent ->{
+						HighscoreController.changeScore(5.5555555);
 						move (0, -CONSTANT);
 						setState(0);
 					});
@@ -99,14 +101,15 @@ public class Animal extends AnimatedObject {
 			
 		});
 		
+		
 		finished = false;
 
 
 	}
 	
+
 	private void setState(int state) {		
 		setImage(this.states[state]);
-
 	}
 
 
@@ -118,8 +121,7 @@ public class Animal extends AnimatedObject {
 			ticks = 0;
 			setState(0);
 			HighscoreController.changeScore(points);
-			TimeController.reset();
-			
+			TimeController.reset();		
 		});
 		pause.play();
 	}
@@ -128,10 +130,16 @@ public class Animal extends AnimatedObject {
 	@Override
 	public void act() {
 		if (ticks == -1 ) {
-			if (LivesController.getFrogLives() > 0) {
+			if (LivesController.getFrogLives() > 0 ) {
+				if (HighscoreController.getScore() >= 50) {
 					respawn(-50);
+				} else {
+					respawn(0);
+				}
+				
 			} else if (!finished) {
 				finished = true;
+				AudioController.playGameOverAudio();
 				MenuController.gameOver();
 			}
 		}
@@ -147,7 +155,7 @@ public class Animal extends AnimatedObject {
 		
 		if (carDeath) {
 			AudioController.playStreetDeathAudio();
-			animate(Arrays.copyOfRange(states,8,12),20);		
+			animate(Arrays.copyOfRange(states,8,12),20);				
 		}
 			
 			
@@ -184,7 +192,7 @@ public class Animal extends AnimatedObject {
 						waterDeath = noMove =  true;
 						LivesController.removeFrogLife();
 					}
-					else 
+				else 
 						move(((WetTurtle) (object)).actorSpeed,0);
 				
 				} else if (object instanceof Turtle)
@@ -221,9 +229,9 @@ public class Animal extends AnimatedObject {
 			}
 		}
 		
-	}
 	
+	}
+}
 
 		
 	
-}
