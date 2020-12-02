@@ -7,7 +7,6 @@ import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -19,9 +18,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import model.Animal;
+
 import model.BackgroundImage;
-import model.ScoreBoard;
+import model.ScoreModel;
 import view.ButtonView;
 import view.GameView;
 import view.LabelView;
@@ -277,7 +276,8 @@ public class MenuController {
 	}
 
 	public static void gameOver() {
-		ScoreBoard.write(ScoreController.getScoresPath());
+		
+		ScoreModel.write(ScoreController.getScoresPath());
 		mainStage.close();
 		intialiseStage();
 		
@@ -291,7 +291,7 @@ public class MenuController {
 	}
 	
 	public static void gameWon() {
-		ScoreBoard.write(ScoreController.getScoresPath());
+		ScoreModel.write(ScoreController.getScoresPath());
 		mainStage.close();
 		intialiseStage();
 		

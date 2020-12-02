@@ -1,13 +1,17 @@
 package model;
 
 /**
- * Class derived from Intersecting Object
- * Also acts as a base class for several other classes
- * @author hcysu1
+ * Class derived from Intersecting Object and also acts as a base class for several other classes <p>
+ * Allows us to use the methods to set the position of the actors and the movement of the frog.
+ * Also uses an abstract method act to set the actions of the frog in Animal class
+ * @author Amended from given Actor class
  *
  */
 public abstract class Actor extends IntersectingObject{
 	
+	/**
+	 * Variable of type double that allows us to set the speed of different actors distinctly
+	 */
 	public double actorSpeed;
 	
 	/**
@@ -25,9 +29,9 @@ public abstract class Actor extends IntersectingObject{
 	 * @param x_movement Set the value for the x movement of the frog
 	 * @param y_movement Set the value for the y movement of the frog
 	 */
-	public void move(double x_movement, double y_movement) {
-		setX(getX() + x_movement);
-		setY(getY() + y_movement);
+	public void move(double dx, double dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
 	}
 
 	public abstract void act();

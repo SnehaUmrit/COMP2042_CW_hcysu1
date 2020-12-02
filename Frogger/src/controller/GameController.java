@@ -15,6 +15,7 @@ import model.IntersectingObject;
 import view.GameView;
 
 public class GameController {
+	
 	public final static double FRAMERATE = 0.01;
 	
 	private static  GameView gameView;

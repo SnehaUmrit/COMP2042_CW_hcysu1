@@ -3,13 +3,23 @@ package model;
 import javafx.scene.image.Image;
 
 /**
- * Derived from Actor class
+ * New class derived from Actor class
+ * <p>
+ * Allows us to set the animation of the different actors and set their state and speed easily by calling method setAnimation
  * @author hcysu1
  *
  */
 public abstract class AnimatedObject extends Actor{
-	public final Image[] states;
-	public int ticks = 0;
+	/**
+	 * Array of images representing the states of the actors
+	 */
+	public final Image[] states;	
+	/**
+	 * Set to zero when the frog is moving without getting hit or sinking
+	 * If a car hits the frog or the frog is sunk, then checks is set to -1
+	 * This leads to a deduction in score and also resets the progress bar
+	 */
+	public int checks = 0;
 	
 	
 	/**
@@ -22,7 +32,7 @@ public abstract class AnimatedObject extends Actor{
 	 */
 	public AnimatedObject(int x, int y, int width, int height, String[] actorPaths) {
 		super(x, y);
-		this.states =new Image[actorPaths.length];
+		this.states = new Image[actorPaths.length];
 		for(int i =0; i < states.length; i++) {
 			states[i] = new Image(actorPaths[i], width, height, false, true);
 		}
@@ -30,17 +40,17 @@ public abstract class AnimatedObject extends Actor{
 	
 	
 	/**
-	 * Allows us to set the different states of each actor as well as change their speed accordingly
+	 * Allows us to set the different states of each actor as well as change their speed 
 	 * @param states The different states of animation of the actors
 	 * @param speed The rate at which the different images are cycled
 	 */
-	public void animate(Image[] states, int speed) {
-		ticks++;
-		if (ticks/speed > states.length) {
-			ticks = -1;
+	public void setAnimation(Image[] states, int speed) {
+		checks++;
+		if (checks/speed > states.length) {
+			checks = -1;
 		}
-		if (ticks > speed - 1 && ticks % speed == 0) {
-			setImage(states[(ticks/speed) - 1]);
+		if (checks > speed - 1 && checks % speed == 0) {
+			setImage(states[(checks/speed) - 1]);
 		}
 	}
 	

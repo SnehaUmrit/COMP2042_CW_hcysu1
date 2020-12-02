@@ -118,10 +118,10 @@ public class EndController {
 				while (active(ENDS[position])) {
 					position = RANDOM.nextInt(5);
 				}
-				((End) ENDS[position]).makeUnsafe();
+				((End) ENDS[position]).addCrocodile();
 				crocodile = position;
 			} else {
-				((End) ENDS[crocodile]).free();
+				((End) ENDS[crocodile]).setEmpty();
 				crocodile = -1;
 			}
 			crocodileTicks = 0;

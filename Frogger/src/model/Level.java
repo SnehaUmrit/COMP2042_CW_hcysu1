@@ -2,13 +2,14 @@ package model;
 
 /**
  * 
+ * New class that creates arrays of type Actor for the different levels. <p>
+ * Allows us to add the classes that inherits Actor class. <br>
+ * Obstacle (x position, y position, obstacle name, speed) <br>
+ * WetTurtle (x position, y position, speed) <br>
+ * Log (x position, y position, width, speed) <br>
+ * Snake (x position, y position, speed) <br>
+ * UnsafeCrocodile (x position, y position, speed)
  * @author hcysu1
- * Class that creates arrays of type Actor for the different levels
- * Allows us to add the classes that inherits Actor class
- * Obstacle (x position, y position, obstacle name, speed)
- * WetTurtle (x position, y position, speed)
- * Log(x position, y position, width, speed)
- * Snake(x position, y position, speed)
  * 
  */
 public class Level {
@@ -23,10 +24,8 @@ public class Level {
 	 * Level 1 has bonus insects appearing randomly
 	 */
 	private static final Actor[] LEVEL1 = new Actor[] {
-		
-			
-		
-		/*//street row 1
+
+		//street row 1
 		new Obstacle(0,645,"long blue truck",1),	
 		new Obstacle(500,645,"long blue truck",1),
 		
@@ -45,7 +44,7 @@ public class Level {
 		new Obstacle(400,445,"race car",-3),
 		new Obstacle(500,445,"race car",-3),
 				
-		//Level 1 - No snake on median*/
+		//Level 1 - No snake on median
 		
 		//river row 1
 		new WetTurtle(200,310,-1),

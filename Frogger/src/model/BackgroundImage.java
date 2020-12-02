@@ -4,10 +4,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- * Called in MenuController class 
- * Allows us to set the background image with a fixed width and height
- * Makes it more efficient to set background image by only keying in the path of the image as a String
- * @author hcysu1
+ * Called in MenuController and GameView class to set background image
+ * <p>
+ * Makes it more efficient to set background image by only keying in the path of the image as a String as the length and width are fixed.
+ * It is derived from ImageView instead of Actor as previously done. 
+ * @author Amended from given BackgroundImage class
  *
  */
 public class BackgroundImage extends ImageView{

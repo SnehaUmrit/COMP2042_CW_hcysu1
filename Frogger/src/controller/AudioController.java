@@ -34,11 +34,8 @@ public class AudioController {
 	
 	/**
 	 * Allows us to play the menu audio continuously by using setCycleCount and setting it to indefinite
-	 * When the menu audio is being played all the other game audio has to be stopped
-	 * Thus we call the stopAllGameAudio() method
 	 */
 	public static void playMenuAudio() {
-		stopAllGameAudio();
 		MENU_AUDIO.setCycleCount(MediaPlayer.INDEFINITE);
 		MENU_AUDIO.play();		
 	}

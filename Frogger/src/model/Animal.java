@@ -16,20 +16,33 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
+/**
+ * 
+ * Defines the behaviour of the frog which is controlled by the player <p>
+ * Extends AnimatedObject. Uses PauseTransition to check when key is released instead of previously used setOnKeyReleased key event that was less efficient
+ * @author Amended from given Animal class
+ *
+ */
 public class Animal extends AnimatedObject {
 	
+	private static final int START_X = 300;
 	private static final int START_Y = 719;
 	private static final int CONSTANT = 25;
 	private static final int WATER_LEVEL = 350;
 	private static final int INSECT_BONUS = 100;
 	private final PauseTransition pause = new PauseTransition(Duration.millis(120));
 	private boolean noMove, carDeath, waterDeath = false;
-	private static boolean finished;
+	private static boolean gameOver;
 
-	boolean changeScore = false;
-	
-	public Animal(int x, int y) {
-		
+	/**
+	 * 
+	 * Uses an array to store the different images of the frog.
+	 * Allows us to switch easily between states and is more efficient when it comes to animations such as death animation and water animation.
+	 * Also allows us to set the audio depending on the movement of the frog.
+	 * @param x Defines x position of frog
+	 * @param y Defines y position of frog
+	 */
+	public Animal(int x, int y) {		
 		super(x, y, 38, 38, new String[] {
 				"file:res/Sprites/froggerUp.png",       //0
 				"file:res/Sprites/froggerLeft.png",     //1
@@ -99,25 +112,30 @@ public class Animal extends AnimatedObject {
 			}
 			
 		});
-		
-		
-		finished = false;
 
-
+		gameOver = false;
 	}
 	
-
+	/**
+	 * Used to set the image of the frog by choosing from the array
+	 * @param state The number in the array of images representing the different sprites of the frog
+	 */
 	private void setState(int state) {		
 		setImage(this.states[state]);
 	}
 
 
-	private void respawn(int points) {
+	/**
+	 * Method to change points accordingly and reset the progress bar and position of frog.
+	 * Uses the changeScore method from ScoreController
+	 * @param points The point that is to be deducted or added
+	 */
+	private void changePoints(int points) {
 		pause.setOnFinished(actionEvent -> {
-			setX(300);
+			setX(START_X);
 			setY(START_Y);
 			carDeath = waterDeath = noMove = false;
-			ticks = 0;
+			checks = 0;
 			setState(0);
 			ScoreController.changeScore(points);
 			TimeController.reset();		
@@ -125,19 +143,25 @@ public class Animal extends AnimatedObject {
 		pause.play();
 	}
 	
-	
+	/**
+	 * Defines various response of the frog based on the distinct actions.
+	 * Checks intersections of frog with other actors. 
+	 * Checks whether frog has reached the end and call changePoints method when needed.
+	 * Reset progress bar and remove frog lives accordingly.
+	 */
 	@Override
 	public void act() {
-		if (ticks == -1 ) {
+		if (checks == -1 ) {
 			if (LivesController.getFrogLives() > 0 ) {
 				if (ScoreController.getScore() >= 50) {
-					respawn(-50);
+					changePoints(-50);
 				} else {
-					respawn(0);
+					changePoints(0);
 				}
 				
-			} else if (!finished) {
-				finished = true;
+			} else if (!gameOver) {
+				
+				gameOver = true;	
 				AudioController.playGameOverAudio();
 				MenuController.gameOver();
 			}
@@ -155,13 +179,13 @@ public class Animal extends AnimatedObject {
 		if (carDeath) {
 			
 			AudioController.playStreetDeathAudio();
-			animate(Arrays.copyOfRange(states,8,12),20);				
+			setAnimation(Arrays.copyOfRange(states,8,12),20);				
 		}
 			
 			
 		else if (waterDeath) {
 			AudioController.playWaterDeathAudio();
-			animate(Arrays.copyOfRange(states, 12, 16),20);
+			setAnimation(Arrays.copyOfRange(states, 12, 16),20);
 		}
 			
 		
@@ -220,7 +244,7 @@ public class Animal extends AnimatedObject {
 						noMove = true;
 						AudioController.playEndAudio();
 						EndController.activate(object);						
-						respawn(100);
+						changePoints(100);
 					} 
 				}
 				
