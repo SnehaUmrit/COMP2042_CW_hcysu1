@@ -14,12 +14,17 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.text.Font;
 
 /**
- * 
+ * New class that extends Label. <p>
+ * Used as score and help label in the menu sub scenes.
+ * Allows us to set the image and font to the labels.
  * @author hcysu1
  *
  */
 public class LabelView extends Label{
 	
+	/**
+	 * Font file obtained from https://kenney.nl/assets/ui-pack
+	 */
 	private  static final String FONT_PATH = "res/Font/Kenney Pixel.ttf";
 	private static final String BACKGROUND_IMAGE = "file:res/Buttons/green_button13.png";
 

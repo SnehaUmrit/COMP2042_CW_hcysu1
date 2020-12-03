@@ -10,7 +10,7 @@ import javafx.util.Duration;
 
 /**
  * 
- * Allows us to set different audio at different points in the game
+ * New class that allows us to set different audio at different points in the game.<p>
  * Audio for menu that plays on a loop
  * Audio for sprite movements
  * Audio for water death and street death

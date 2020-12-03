@@ -5,12 +5,17 @@ import javafx.scene.layout.Pane;
 import model.Animal;
 import model.BackgroundImage;
 
+/**
+ * New class that extends Pane and uses constructor to set the game views. <p>
+ * Allows us to set the background of the game.
+ * Allows us to add to the game the various other views using the controller classes
+ * @author hcysu1
+ *
+ */
 public class GameView  extends Pane{
 	
+
 	public GameView() {
-		
-
-
 		BackgroundImage gameBackground = new BackgroundImage("file:res/Background/backdroptry16.png");
 		getChildren().add(gameBackground);	
 		

@@ -15,7 +15,7 @@ public abstract class Actor extends IntersectingObject{
 	public double actorSpeed;
 	
 	/**
-	 * 
+	 * Allows us to set the x and y position of the actor
 	 * @param x Determines the x position of the actor
 	 * @param y Determines the y position of the actor
 	 */
@@ -25,9 +25,9 @@ public abstract class Actor extends IntersectingObject{
 	
 
 	/**
-	 * 
-	 * @param x_movement Set the value for the x movement of the frog
-	 * @param y_movement Set the value for the y movement of the frog
+	 * Allows us to set the movement of the actor
+	 * @param x movement Set the value for the x movement of the frog
+	 * @param y movement Set the value for the y movement of the frog
 	 */
 	public void move(double dx, double dy) {
 		setX(getX() + dx);

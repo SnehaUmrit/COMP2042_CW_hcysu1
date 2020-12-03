@@ -12,7 +12,9 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.util.Duration;
 
 /**
- * Set subscene for help and highscore
+ * New class that extends SubScene. <p>
+ * Used to create sub scene in menu.
+ * Set sub scene for help and high score.
  * @author hcysu1
  *
  */
@@ -22,7 +24,7 @@ public class SubSceneView extends SubScene{
 	private boolean isHidden = true;
 	
 	/**
-	 * Constructor to set width, height and layout of subscene
+	 * Constructor to set width, height and layout of sub scene
 	 * Set image using AnchorPane
 	 */
 	public SubSceneView() {
@@ -42,9 +44,9 @@ public class SubSceneView extends SubScene{
 	
 
 	/**
-	 * Controls movement of subscene
-	 * Uses TranslateTransition for the subscene transition
-	 * Checks if subscene is hidden for transition to take place
+	 * Controls movement of sub scene
+	 * Uses TranslateTransition for the sub scene transition
+	 * Checks if sub scene is hidden for transition to take place
 	 */
 	public void moveSubScene() {
 		
@@ -66,7 +68,7 @@ public class SubSceneView extends SubScene{
 	
 	/**
 	 * cast to AnchorPane
-	 * @return subscene as AnchorPane type
+	 * @return sub scene as AnchorPane type
 	 */
 	public AnchorPane getPane() {
 		return (AnchorPane) this.getRoot();

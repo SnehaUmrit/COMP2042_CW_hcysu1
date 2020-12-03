@@ -12,14 +12,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 /**
- * Set the style for the buttons in main menu
- * Load the font used for the buttons
- * Background colour of button is set to transparent 
+ * New class to set the style for the buttons in main menu. <p>
+ * Load the font used for the buttons.
+ * Background colour of button is set to transparent.
  * @author hcysu1
  *
  */
 public class ButtonView extends Button{
 	
+	/**
+	 * Font file obtained from https://kenney.nl/assets/ui-pack
+	 */
 	private final String FONT_PATH = "res/Font/Kenney Pixel.ttf";
 	private final String BUTTON_PRESSED_STYLE = "-fx-background-color:transparent;";
 	private final String BUTTON_FREE_STYLE = "-fx-background-color: transparent;"; 

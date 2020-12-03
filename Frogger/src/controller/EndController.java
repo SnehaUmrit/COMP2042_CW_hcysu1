@@ -6,14 +6,19 @@ import model.End;
 import model.IntersectingObject;
 
 /**
+ * New class that allows us to set the ends using IntersectingObject. <p>
+ * Allows us to implement a method that returns the number of ends left.
+ * Allows us to implement a method that can check whether all the ends are full.
+ * Allows us to implement methods to check whether an end is active or not.
+ * Implements methods from End model.
  * 
  * @author hcysu1
  *
  */
 public class EndController {
-	private static final Random RANDOM = new Random();
+	private static final Random appearance = new Random();
 	private static int crocodile = -1;
-	private static int crocodileTicks = 0;
+	private static int crocodileChecks = 0;
 	
 	/**
 	 * Set the x position of the end 
@@ -80,18 +85,18 @@ public class EndController {
 	}
 	
 	/**
+	 * Uses isActive method from End 
 	 * End that does not have a frog
 	 * @param object
-	 * @return
 	 */
 	public static boolean inactive(IntersectingObject object) {
 		return !((End) object).isActive();
 	}
 	
 	/**
+	 * Uses isActive method from End 
 	 * End that has a frog
 	 * @param object
-	 * @return
 	 */
 	public static boolean active(IntersectingObject object) {
 		return ((End) object).isActive();	
@@ -99,9 +104,9 @@ public class EndController {
 	}
 	
 	/**
+	 * Uses isUnsafe method from End
 	 * End that has a crocodile
 	 * @param object
-	 * @return
 	 */
 	public static boolean unsafe(IntersectingObject object) {
 		return ((End) object).isUnsafe();	
@@ -109,24 +114,28 @@ public class EndController {
 	}
 	
 	/**
-	 * 
+	 * Uses the random variable to determine movement and appearance of crocodile at various ends
 	 */
 	public static void moveCrocodile() {
-		if(crocodileTicks == 30) {
+		if(crocodileChecks == 30) {
 			if(crocodile < 0) {
-				int position = RANDOM.nextInt(5);
+				
+				int position = appearance.nextInt(5);
+				
 				while (active(ENDS[position])) {
-					position = RANDOM.nextInt(5);
+					position = appearance.nextInt(5);
 				}
+				
 				((End) ENDS[position]).addCrocodile();
 				crocodile = position;
+				
 			} else {
 				((End) ENDS[crocodile]).setEmpty();
 				crocodile = -1;
 			}
-			crocodileTicks = 0;
+			crocodileChecks = 0;
 		} else {
-			crocodileTicks++;
+			crocodileChecks++;
 		}
 	}
 	

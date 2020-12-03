@@ -3,8 +3,10 @@ package controller;
 import view.LivesView;
 
 /**
+ * New class that creates a static instance of LivesView to generate images representing lives of frog.<p>
+ * Allows us to implement setter and getter methods for froglives.
+ * Allows us to implement a method to remove froglives.
  * 
- * Creates a static instance of LivesView to generate images representing lives of frog
  * @author hcysu1
  *
  */

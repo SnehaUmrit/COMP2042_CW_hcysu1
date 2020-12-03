@@ -26,6 +26,14 @@ import view.GameView;
 import view.LabelView;
 import view.SubSceneView;
 
+/**
+ * New class that allows us to set the elements of frogger menu. <p>
+ * Uses a method initialiseStage that is called in the setMainStage method which is eventually called in main class.
+ * Allows us to set the actions of the button events.
+ * Allows us to set the text of help sub scene.
+ * @author hcysu1
+ *
+ */
 public class MenuController {
 	
 	private static Stage mainStage;
@@ -49,7 +57,10 @@ public class MenuController {
 	static List<ButtonView> menuButtons;
 	
 	/**
-	 * 
+	 * Create main pane, scene and stage
+	 * Allows us to set the scene
+	 * Allows us to call other methods.
+	 * And also allows us to set the menuAudio
 	 */
 	public static void intialiseStage() {
 		menuButtons = new ArrayList<>();
@@ -70,7 +81,8 @@ public class MenuController {
 	}
 	
 	/**
-	 * 
+	 * Used to set the mainStage.
+	 * Method is called in main class
 	 * @param mainStage
 	 */
 	public static void setMainStage(Stage mainStage) {
@@ -91,7 +103,7 @@ public class MenuController {
 	}
 
 	/**
-	 * Create help subscene 
+	 * Create help sub scene 
 	 * Add help LabelView
 	 * 
 	 */
@@ -118,7 +130,11 @@ public class MenuController {
 		helpSubScene.getPane().getChildren().add(help);		
 	}
 
-	
+	/**
+	 * Create score sub scene.
+	 * Allows us to set the label style
+	 * 
+	 */
 	public static void createScoreSubScene() {
 	
 		scoreSubScene = new SubSceneView();
@@ -138,6 +154,11 @@ public class MenuController {
 		
 	}
 
+	/**
+	 * Method to add the buttons on mainPane
+	 * Allows us to set the layout
+	 * @param button
+	 */
 	private static void addMenuButton(ButtonView button) {
 		button.setLayoutX(MENU_BUTTONS_STARTX);
 		button.setLayoutY(MENU_BUTTONS_STARTY + menuButtons.size()*65);
@@ -145,17 +166,19 @@ public class MenuController {
 		mainPane.getChildren().add(button);
 	}
 	
-	
+	/**
+	 * Used to call methods that create buttons
+	 */
 	private static void createButtons() {
 		createStartbutton();
 		createHelpbutton();
 		createScorebutton();
-		//createSettingsbutton();
 		createQuitbutton();
-		
-
 	}
 	
+	/**
+	 * Set the actions to be taken when play button is pressed
+	 */
 	private static void createStartbutton() {
 		ButtonView buttonPlay = new ButtonView("PLAY");
 		addMenuButton(buttonPlay);
@@ -166,7 +189,6 @@ public class MenuController {
 			public void handle(ActionEvent event) {
 				
 				GameView gameView = GameController.getGame();
-				//gameView.getChildren().add(new Animal());
 				
 				gameScene = new Scene(gameView,WIDTH,HEIGHT);
 				mainStage.setScene(gameScene);
@@ -177,7 +199,9 @@ public class MenuController {
 	}
 	
 
-	
+	/**
+	 * Set the actions when help button is pressed
+	 */
 	private static void createHelpbutton() {
 		ButtonView buttonHelp = new ButtonView("HELP");
 		addMenuButton(buttonHelp);
@@ -194,7 +218,9 @@ public class MenuController {
 	
 
 	
-	
+	/**
+	 * Set the actions when score score button is pressed
+	 */
 	private static void createScorebutton() {
 		ButtonView buttonScore = new ButtonView("SCORES");
 		addMenuButton(buttonScore);
@@ -209,12 +235,10 @@ public class MenuController {
 		});
 	}
 	
-	
-	/*private void createSettingsbutton() {
-	FroggerButton buttonSettings = new FroggerButton("SETTINGS");
-	addMenuButton(buttonSettings);
-	}*/
 
+	/**
+	 * Close mainStage when button is pressed
+	 */
 	private static void createQuitbutton() {
 		ButtonView buttonQuit = new ButtonView("QUIT");
 		addMenuButton(buttonQuit);
@@ -229,7 +253,9 @@ public class MenuController {
 		});
 	}
 	
-	
+	/**
+	 * Allows us to set the image of the menu background
+	 */
 	private static void createBackground() {
 
 		BackgroundImage menuBackground = new BackgroundImage("file:res/Background/menu_bg11.png");
@@ -237,6 +263,9 @@ public class MenuController {
 		
 	}
 	
+	/**
+	 * Allows us to set the logo on frogger menu
+	 */
 	private static void createLogo() {
 		ImageView logo = new ImageView("file:res/Logo/classic_logo.png");
 		logo.setLayoutX(75);
@@ -275,6 +304,10 @@ public class MenuController {
 		
 	}
 
+	
+	/**
+	 * Used to determine the set of actions to be taken as the player loses the game
+	 */
 	public static void gameOver() {
 		
 		ScoreModel.write(ScoreController.getScoresPath());
@@ -290,6 +323,9 @@ public class MenuController {
 		
 	}
 	
+	/**
+	 * Used to determine the set of actions to be taken when the player wins the game
+	 */
 	public static void gameWon() {
 		ScoreModel.write(ScoreController.getScoresPath());
 		mainStage.close();
@@ -303,7 +339,11 @@ public class MenuController {
 		showSubScene(scoreSubScene);
 	}
 	
-	
+	/**
+	 * Used to set the font.
+	 * Uses try/catch in case the font file is not found
+	 * @param label
+	 */
 	private static void setTextFont(Label label) {
 		try {
 			label.setFont(Font.loadFont(new FileInputStream("res/Font/Kenney Pixel.ttf"),30));

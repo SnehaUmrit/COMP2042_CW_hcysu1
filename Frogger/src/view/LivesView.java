@@ -5,8 +5,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 /**
- * 
- * 
+ * New class that extends Pane.<p>
+ * Allows us to create an array of type ImageView to create the images within a set layout and size.
  * @author hcysu1
  *
  */

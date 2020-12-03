@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 /**
+ * New class that extends Pane. <p>
  * Uses ProgressBar to visualise the progress as game proceeds
  * Uses Timeline to be able to set the desired amount of time for the game completion
  * Allows implementation of game progress bar to make game more interesting 

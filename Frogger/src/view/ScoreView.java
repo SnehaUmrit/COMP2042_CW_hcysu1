@@ -11,15 +11,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 /**
- * Set the font, layout, and effect of score label
- * Found at top of each level indicating the level the player is on
+ * New class that extends Pane. <p>
+ * Set the font, layout, and effect of score label found at top of each level indicating the level the player is on.
  * Set the font path for the score label
  * @author hcysu1
  *
  */
 public class ScoreView extends Pane{
 	
-
+	/**
+	 * Font file obtained from https://kenney.nl/assets/ui-pack
+	 */
 	private final String FONT_PATH = "res/Font/Kenney Pixel.ttf";	
 	private DropShadow drop;
 	
