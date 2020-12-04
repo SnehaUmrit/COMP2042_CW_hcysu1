@@ -29,7 +29,7 @@ public class Animal extends AnimatedObject {
 	private static final int START_Y = 719;
 	private static final int CONSTANT = 25;
 	private static final int WATER_LEVEL = 350;
-	private static final int INSECT_BONUS = 100;
+	private static final int INSECT_BONUS = 50;
 	private final PauseTransition pause = new PauseTransition(Duration.millis(120));
 	private boolean noMove, carDeath, waterDeath = false;
 	private static boolean gameOver;
@@ -72,7 +72,7 @@ public class Animal extends AnimatedObject {
 					setState(4);
 					move(0,-CONSTANT);
 					pause.setOnFinished(actionEvent ->{
-						ScoreController.changeScore(5.5555555);
+						ScoreController.changeScore(1);
 						move (0, -CONSTANT);
 						setState(0);
 					});
@@ -244,7 +244,7 @@ public class Animal extends AnimatedObject {
 						noMove = true;
 						AudioController.playEndAudio();
 						EndController.activate(object);						
-						changePoints(100);
+						changePoints((int) (100 + (10 * Math.round(TimeController.getProgressbarValue()))));
 					} 
 				}
 				

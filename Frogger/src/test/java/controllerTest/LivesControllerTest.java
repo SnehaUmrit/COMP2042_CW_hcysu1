@@ -12,9 +12,9 @@ class LivesControllerTest {
 
 	
 	 @BeforeEach
-	    void createPanel() {
+	 void createPanel() {
 	        JFXPanel panel = new JFXPanel();
-	    }
+	  }
 	 
 	@Test
 	void StartingLivesTest() {

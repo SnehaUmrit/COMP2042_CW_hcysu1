@@ -118,7 +118,7 @@ public class MenuController {
 		
 		Label help = new Label("- PRESS W,A,S,D KEYS TO MOVE FROGGY\n"
 								+ "- AVOID VEHICES AND SNAKES\n"
-								+ "- GRAB A FLY TO GET EXTRA POINYS\n"
+								+ "- GRAB A FLY TO GET EXTRA POINTS\n"
 								+ "- BE QUICK TO GAIN EXTRA TIME BONUS\n"
 								+ "- CROCODILES CAN BE SAFE RIDES, BUT \n"
 								+ "! ! ! BEWARE WHEN THEY OPEN THEIR MOUTH ! ! !");

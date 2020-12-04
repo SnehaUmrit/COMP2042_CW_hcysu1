@@ -80,12 +80,8 @@ public class ScoreController {
 	 * @param points
 	 */
 	public static void changeScore(double points) {
-		int newScore = score.get();
-		if (points < 0) {
-			newScore += points;
-		} else {
-			newScore += points * (1 + TimeController.getProgressbarValue());
-		}
+		int newScore = score.get();	
+		newScore += points;		
 		score.set(newScore);
 	}
 	
