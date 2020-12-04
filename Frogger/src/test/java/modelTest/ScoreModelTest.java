@@ -1,18 +1,17 @@
 package modelTest;
 
-import javafx.embed.swing.JFXPanel;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import model.Insect;
+import javafx.embed.swing.JFXPanel;
+import model.End;
+import model.ScoreModel;
 
-class InsectTest {
-
-	Insect insect;
+class ScoreModelTest {
 	
+	String invalidScorePath = "src/test/resources/InvalidScoreTest.csv";
 	/**
 	 * Before we can create JavaFX project, we have to get the application running.
 	 * This can be done by initialising the JFXPanel before running the test methods.
@@ -23,15 +22,12 @@ class InsectTest {
 	    void createPanel() {
 	        JFXPanel panel = new JFXPanel();
 	    }
-	 
-	
+
 	@Test
-	void isIntersectingTest() {
-		insect = new Insect(0,0);
-		assertFalse(insect.isIntersecting());
-		insect.intersect();
-		assertTrue(insect.isIntersecting());
-		
+	void InvalidScoreTest() {
+		assertThrows(NumberFormatException.class, () -> {
+			ScoreModel.read(invalidScorePath);
+		});
 	}
 
 }

@@ -25,7 +25,7 @@ public class Level {
 	 */
 	private static final Actor[] LEVEL1 = new Actor[] {
 
-		/*//street row 1
+		//street row 1
 		new Obstacle(0,645,"long blue truck",1),	
 		new Obstacle(500,645,"long blue truck",1),
 		
@@ -44,7 +44,7 @@ public class Level {
 		new Obstacle(400,445,"race car",-3),
 		new Obstacle(500,445,"race car",-3),
 				
-		//Level 1 - No snake on median*/
+		//Level 1 - No snake on median
 		
 		//river row 1
 		new WetTurtle(200,310,-1),

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import controller.ScoreController;
+import javafx.scene.control.Label;
 
 
 /**
@@ -51,7 +52,8 @@ public class ScoreModel {
 			
 			return output;	
 		} catch (IOException e) {
-			return "No scores found!!";
+			String string = "No Scores Found!!";			
+			return string;
 		}
 
 	}

@@ -1,18 +1,16 @@
 package modelTest;
 
-import javafx.embed.swing.JFXPanel;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import model.Insect;
+import javafx.embed.swing.JFXPanel;
+import model.Turtle;
 
-class InsectTest {
+class TurtleTest {
 
-	Insect insect;
-	
+	Turtle turtle;
 	/**
 	 * Before we can create JavaFX project, we have to get the application running.
 	 * This can be done by initialising the JFXPanel before running the test methods.
@@ -22,15 +20,16 @@ class InsectTest {
 	 @BeforeEach
 	    void createPanel() {
 	        JFXPanel panel = new JFXPanel();
+	        turtle = new Turtle(0,0,-1);
 	    }
 	 
-	
+	 
+	 
 	@Test
-	void isIntersectingTest() {
-		insect = new Insect(0,0);
-		assertFalse(insect.isIntersecting());
-		insect.intersect();
-		assertTrue(insect.isIntersecting());
+	void actTest() {		
+		turtle.setX(-80);
+		turtle.act();
+		assertEquals(turtle.getX(),600);
 		
 	}
 
