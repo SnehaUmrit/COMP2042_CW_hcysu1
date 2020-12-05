@@ -14,7 +14,7 @@ import view.LevelView;
  */
 public class LevelController {
 	
-	private static final int MAX_LEVEL = 5;
+	private static final int MAX_LEVEL = 10;
 	private static final SimpleIntegerProperty LEVEL_VALUE = new SimpleIntegerProperty();
 	
 	/**
@@ -76,10 +76,5 @@ public class LevelController {
 		return LEVEL_VALUE.getValue().intValue();
 	}
 
-	
-	public static Actor[] getSpecificLevel(int level) {
-		LEVEL_VALUE.setValue(level);
-		return getCurrentLevel();
-	}
-	
+
 }

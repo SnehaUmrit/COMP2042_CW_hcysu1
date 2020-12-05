@@ -29,7 +29,6 @@ public class ButtonView extends Button{
 	
 	/**
 	 * Set width and height
-	 * 
 	 * @param text
 	 */
 	public ButtonView(String text) {	

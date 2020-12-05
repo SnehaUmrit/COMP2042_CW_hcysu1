@@ -8,6 +8,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.util.Duration;
 import model.Actor;
 import model.Insect;
@@ -47,6 +48,7 @@ public class GameController {
 	static final Timeline TIMELINE = new Timeline(new KeyFrame(Duration.seconds(FRAMERATE), event -> {
 	
 		if (EndController.levelCompleted()) {
+
 			EndController.newLevel();
 			gameView.getChildren().removeAll(LevelController.getCurrentLevel());
 			gameView.getChildren().addAll(LevelController.getNextLevel());		
@@ -62,7 +64,7 @@ public class GameController {
 		
 		double probability = ANIMATION.nextDouble();
 		if (probability < 0.1) {
-			if (LevelController.getLevel() == 3 || LevelController.getLevel() == 4 || LevelController.getLevel() == 5) {
+			if (LevelController.getLevel() == 3 || LevelController.getLevel() == 5 || LevelController.getLevel() == 7 || LevelController.getLevel() == 9 || LevelController.getLevel() == 10) {
 				EndController.moveCrocodile();
 			}
 
@@ -72,7 +74,7 @@ public class GameController {
 			int componentX = ANIMATION.nextInt(4);
 			int y = (componentY + 3) * 50 +1 ;
 			int x = (componentX + 100);
-			if (LevelController.getLevel() == 1 || LevelController.getLevel() == 2 || LevelController.getLevel() == 3) {
+			if (LevelController.getLevel() == 1 || LevelController.getLevel() == 2 || LevelController.getLevel() == 3 || LevelController.getLevel() == 4 || LevelController.getLevel() == 5) {
 				gameView.getChildren().add(new Insect(x,y));
 				bonus++;
 			}						

@@ -1,7 +1,7 @@
 plugins {  
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.8' 
+    id 'org.openjfx.javafxplugin' version '0.0.9' 
     
 }
 
@@ -13,18 +13,23 @@ repositories {
 
 sourceCompatibility = 1.8
 
-dependencies {
-    testImplementation('org.junit.jupiter:junit-jupiter-api:5.4.2')
-    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.4.2')
-}
 
+
+//Supplying unit test platform to build tool
 test {
     useJUnitPlatform()
 }
 
+//After specifying the platform, we need to supply the JUnit dependencies.
+//In JUnit5, since the api is separated from the runtime, we need two dependencies
+dependencies {
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.5.1')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.5.1')
+}
+
 javafx {
 	//Points to JDK and JavaFX libraries 
-    version = "15" //Specify the version of JavaFX SDK
+    version = "11.0.2" //Specify the version of JavaFX SDK
     modules = [ 'javafx.controls', 'javafx.media', 'javafx.graphics',  'javafx.swing' ]
 }
 
