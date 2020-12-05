@@ -9,6 +9,12 @@ package model;
  * Log (x position, y position, width, speed) <br>
  * Snake (x position, y position, speed) <br>
  * UnsafeCrocodile (x position, y position, speed)
+ * Level 1 to 5 have four lanes of traffic and they also have bonus insects that appear randomly.
+ * Level 6 to 10 have fives lanes of traffic and have no bonus insects. 
+ * The difficulty level increases from level 1 to level 10.
+ * Level 1 is a fairly easy level. Level 10 is the most difficult level.
+ * Each level is different in terms of the obstacles present and the speed of the obstacles.
+ * If the player completes level 10 then the game ends.
  * @author hcysu1
  * 
  */
@@ -138,8 +144,9 @@ public class Level {
 	/**
 	 * Creating an array of type Actor named LEVEL3
 	 * LEVEL3 has bonus insects appearing randomly
-	 * LEVEL3 has five lanes of traffic
+	 * LEVEL3 has four lanes of traffic
 	 * LEVEL3 has fives streams of river
+	 * LEVEL3 has a safe median
 	 * LEVEL3 has crocodiles appearing randomly at the ends
 	 */
 	private static final Actor[] LEVEL3 = new Actor[] {
@@ -196,9 +203,9 @@ public class Level {
 	
 	/**
 	 * Creating an array of type Actor named LEVEL4
-	 * Level 4 has fives lanes of traffic
+	 * Level 4 has four lanes of traffic
 	 * Level 4 has five streams of river
-	 * Level 4 has a crocodile that appears randomly at the end
+	 * Level 4 has a snake in the median
 	 * Level 4 has a crocodile that in the river stream
 	 */
 	private static final Actor[] LEVEL4 = new Actor[] {
@@ -255,7 +262,7 @@ public class Level {
 	
 	/**
 	 * Creating an array of type Actor named LEVEL5
-	 * Level 5 has five lanes of traffic
+	 * Level 5 has four lanes of traffic
 	 * Level 5 has a snake that appears on the median
 	 * Level 5 has a crocodile that in the rive
 	 * Level 5 has a crocodile that appears randomly at each end
@@ -314,7 +321,9 @@ public class Level {
 			
 	};
 	
-	
+	/**
+	 * Level6 has five lanes of traffic
+	 */
 	private static final Actor[] LEVEL6 = new Actor[] {
 			
 			//street row 1
@@ -369,7 +378,9 @@ public class Level {
 		
 	};
 	
-	
+	/**
+	 * Level7 has five lanes of traffic with a snake
+	 */
 	private static final Actor[] LEVEL7 = new Actor[] {
 			
 			//street row 1
@@ -427,6 +438,10 @@ public class Level {
 			
 			
 	};
+	
+	/**
+	 * Level 8 has five levels of traffic with varying speeds and a snake and crocodile at the end
+	 */
 	private static final Actor[] LEVEL8 = new Actor[] {
 			
 			//street row 1
@@ -483,6 +498,10 @@ public class Level {
 			
 	};
 	
+	
+	/**
+	 * Level 9 has a five levels of traffic, a snake in the median, and crocodiles
+	 */
 	private static final Actor[] LEVEL9 = new Actor[] {
 			
 			//street row 1
@@ -539,6 +558,10 @@ public class Level {
 	};
 	
 	
+	
+	/**
+	 * Level 10 is the most difficult level as there is a greater chance for the player to lose the game
+	 */
 	private static final Actor[] LEVEL10 = new Actor[] {
 			
 			//street row 1

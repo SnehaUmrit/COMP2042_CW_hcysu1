@@ -38,7 +38,7 @@ public class LivesController {
 	 * @return livesView The images representing the lives of the frog
 	 */
 	public static LivesView getLivesView() {		
-		setFrogLives(5);
+		setFrogLives(6);
 		livesView = new LivesView(frogLives);
 		return livesView;
 	}
