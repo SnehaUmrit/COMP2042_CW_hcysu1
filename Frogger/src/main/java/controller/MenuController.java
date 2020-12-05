@@ -188,8 +188,7 @@ public class MenuController {
 			@Override
 			public void handle(ActionEvent event) {
 				
-				GameView gameView = GameController.getGame();
-				
+				GameView gameView = GameController.getGame();			
 				gameScene = new Scene(gameView,WIDTH,HEIGHT);
 				mainStage.setScene(gameScene);
 

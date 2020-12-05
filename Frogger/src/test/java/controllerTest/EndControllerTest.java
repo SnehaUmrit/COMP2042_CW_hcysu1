@@ -14,7 +14,7 @@ class EndControllerTest {
 	IntersectingObject[] ends;
 	
 	/**
-	 * Before we can create JavaFX project, we have to get the application running.
+	 * Before we can create JavaFX platform, we have to get the application running.
 	 * This can be done by initialising the JFXPanel before running the test methods.
 	 * This is done using @BeforeEach annotation
 	 * 

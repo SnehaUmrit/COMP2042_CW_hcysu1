@@ -13,7 +13,7 @@ class ScoreModelTest {
 	
 	String invalidScorePath = "src/test/resources/InvalidScoreTest.csv";
 	/**
-	 * Before we can create JavaFX project, we have to get the application running.
+	 * Before we can create JavaFX platform, we have to get the application running.
 	 * This can be done by initialising the JFXPanel before running the test methods.
 	 * This is done using @BeforeEach annotation
 	 * 
