@@ -8,7 +8,6 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.util.Duration;
 import model.Actor;
 import model.Insect;
@@ -44,6 +43,7 @@ public class GameController {
 	 * When level completed, all the elements of the current level is removed.
 	 * The elements of the next game are loaded.
 	 * Allows us to set the probability and level at which the insect appears and the crocodile moves 
+	 * Insect appears at most three times
 	 */
 	static final Timeline TIMELINE = new Timeline(new KeyFrame(Duration.seconds(FRAMERATE), event -> {
 	
