@@ -68,7 +68,7 @@ public class GameController {
 				EndController.moveCrocodile();
 			}
 
-		} else if (bonus < 2 && probability > 0.5 && probability < 0.5005) {
+		} else if (bonus < 3 && probability > 0.5 && probability < 0.5005) {
 			probability = ANIMATION.nextDouble();
 			int componentY = ANIMATION.nextInt(8);
 			int componentX = ANIMATION.nextInt(4);
