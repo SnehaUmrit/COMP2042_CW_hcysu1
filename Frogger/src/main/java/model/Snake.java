@@ -43,8 +43,8 @@ public class Snake extends AnimatedObject {
 			setAnimation(states,10);
 			move(actorSpeed,0);
 		} else {
-			double chance = appearance.nextDouble();
-			if (chance < 0.003)
+			double a = appearance.nextDouble();
+			if (a < 0.003)
 				appear = true;		
 		}		
 		if (getX() < -112) {
