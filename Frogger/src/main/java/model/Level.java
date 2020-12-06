@@ -8,7 +8,7 @@ package model;
  * WetTurtle (x position, y position, speed) <br>
  * Log (x position, y position, width, speed) <br>
  * Snake (x position, y position, speed) <br>
- * UnsafeCrocodile (x position, y position, speed)
+ * UnsafeCrocodile (x position, y position, speed)<br>
  * Level 1 to 5 have four lanes of traffic and they also have bonus insects that appear randomly.
  * Level 6 to 10 have fives lanes of traffic and have no bonus insects. 
  * The difficulty level increases from level 1 to level 10.
