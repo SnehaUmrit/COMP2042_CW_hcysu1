@@ -7,7 +7,12 @@ import java.util.Random;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import model.Actor;
 import model.Insect;
@@ -27,6 +32,8 @@ import view.GameView;
  */
 public class GameController {
 	
+	
+	
 	/**
 	 * Instance variable used to set the rate at which the animation will occur.
 	 */
@@ -38,6 +45,7 @@ public class GameController {
 	 * Appearance of insect which serve as bonus points to frog
 	 */
 	private static int bonus = 0;
+
 	
 	/**
 	 * When level completed, all the elements of the current level is removed.
@@ -46,9 +54,19 @@ public class GameController {
 	 * Insect appears at most three times
 	 */
 	static final Timeline TIMELINE = new Timeline(new KeyFrame(Duration.seconds(FRAMERATE), event -> {
+				
+		Button homeButton = new Button();
+		
+		ImageView view = new ImageView(new Image("file:src/main/resources/Buttons/home.png"));
+		view.setFitHeight(30);
+		view.setFitWidth(30);
+		view.setPreserveRatio(true);
 	
+		GameView.setHomeButton(homeButton,view);
+		GameView.initialiseButtonListeners(homeButton);
+		gameView.getChildren().add(homeButton);
+		
 		if (EndController.levelCompleted()) {
-
 			EndController.newLevel();
 			gameView.getChildren().removeAll(LevelController.getCurrentLevel());
 			gameView.getChildren().addAll(LevelController.getNextLevel());		
@@ -79,6 +97,11 @@ public class GameController {
 				bonus++;
 			}						
 		}
+		
+
+		
+		
+		
 	}));
 	
 	/**
@@ -113,6 +136,10 @@ public class GameController {
 		}
 		return objects;
 	}
+	
+	
+	
+	
 	
 	
 }

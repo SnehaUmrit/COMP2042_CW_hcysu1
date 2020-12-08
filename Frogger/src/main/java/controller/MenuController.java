@@ -11,7 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -188,7 +190,8 @@ public class MenuController {
 			@Override
 			public void handle(ActionEvent event) {
 				
-				GameView gameView = GameController.getGame();			
+				GameView gameView = GameController.getGame();
+				
 				gameScene = new Scene(gameView,WIDTH,HEIGHT);
 				mainStage.setScene(gameScene);
 
@@ -336,6 +339,12 @@ public class MenuController {
 		alert.setContentText("YAY, YOU WON!!, PRESS OK TO SEE SCORE BOARD");
 		alert.show();
 		showSubScene(scoreSubScene);
+	}
+	
+	
+	public static void getMenu() {
+		mainStage.close();
+		intialiseStage();
 	}
 	
 	/**
