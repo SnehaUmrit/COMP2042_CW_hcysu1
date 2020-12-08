@@ -9,18 +9,18 @@ import javafx.embed.swing.JFXPanel;
 import model.End;
 
 class EndTest {
-
-	End end;
-	
 	/**
 	 * Before we can create JavaFX platform, we have to get the application running.
 	 * This can be done by initialising the JFXPanel before running the test methods.
-	 * This is done using @BeforeEach annotation
-	 * 
+	 */
+	JFXPanel panel = new JFXPanel();
+	End end;
+	
+	/**
+	 * Using @BeforeEach annotation to initialise the end object before running each test
 	 */
 	 @BeforeEach
-	    void createPanel() {
-	        JFXPanel panel = new JFXPanel();
+	    void createBeforeTest() {        
 	        end = new End(0);
 	    }
 	 	 

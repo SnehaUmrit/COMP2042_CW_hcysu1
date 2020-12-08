@@ -10,16 +10,19 @@ import model.Turtle;
 
 class TurtleTest {
 
-	Turtle turtle;
 	/**
 	 * Before we can create JavaFX platform, we have to get the application running.
 	 * This can be done by initialising the JFXPanel before running the test methods.
-	 * This is done using @BeforeEach annotation
-	 * 
+	 * If we fail to initialise JFXPanel, then our test class would be subject to error since the graphics would not be initialised.
+	 */
+	JFXPanel panel = new JFXPanel();
+	Turtle turtle;
+
+	/**
+	 * Allows us to initialise the Turtle object with its position and speed for testing purposes
 	 */
 	 @BeforeEach
-	    void createPanel() {
-	        JFXPanel panel = new JFXPanel();
+	    void createBeforeTest() {
 	        turtle = new Turtle(0,0,-1);
 	    }
 	 

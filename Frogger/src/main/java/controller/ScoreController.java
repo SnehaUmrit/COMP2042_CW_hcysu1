@@ -9,8 +9,9 @@ import model.ScoreModel;
 import view.ScoreView;
 /**
  * New class that uses ScoreModel to implement read method.<p>
- * Creates an instance of scoreview to update the display as the score changes
- * Implements to update score and return score both as String or integer
+ * Creates an instance of ScoreView to update and display as the score changes.
+ * Implements methods to update score and return score both as String or Integer.
+ * The score allocated at the start of the first level is zero. 
  * @author hcysu1
  *
  */

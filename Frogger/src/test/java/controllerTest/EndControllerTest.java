@@ -11,18 +11,13 @@ import model.IntersectingObject;
  
 class EndControllerTest {
 
-	IntersectingObject[] ends;
-	
 	/**
 	 * Before we can create JavaFX platform, we have to get the application running.
 	 * This can be done by initialising the JFXPanel before running the test methods.
-	 * This is done using @BeforeEach annotation
-	 * 
 	 */
-	@BeforeEach
-	void createPanel() {
-		JFXPanel panel = new JFXPanel();
-	}
+	JFXPanel panel = new JFXPanel();
+	IntersectingObject[] ends;
+	
 	
 	@Test
 	void EndsTest() {

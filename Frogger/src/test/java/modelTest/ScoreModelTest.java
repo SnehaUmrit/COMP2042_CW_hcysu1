@@ -2,27 +2,25 @@ package modelTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javafx.embed.swing.JFXPanel;
-import model.End;
 import model.ScoreModel;
 
 class ScoreModelTest {
 	
-	String invalidScorePath = "src/test/resources/InvalidScoreTest.csv";
 	/**
 	 * Before we can create JavaFX platform, we have to get the application running.
 	 * This can be done by initialising the JFXPanel before running the test methods.
-	 * This is done using @BeforeEach annotation
-	 * 
+	 * If we fail to initialise JFXPanel, then our test class would be subject to error since the graphics would not be initialised.
 	 */
-	 @BeforeEach
-	    void createPanel() {
-	        JFXPanel panel = new JFXPanel();
-	    }
+	JFXPanel panel = new JFXPanel();
+	/**
+	 * Setting the path to the file containing invalid scores
+	 */
+	String invalidScorePath = "src/test/resources/InvalidScoreTest.csv";
 
+	
 	@Test
 	void InvalidScoreTest() {
 		assertThrows(NumberFormatException.class, () -> {

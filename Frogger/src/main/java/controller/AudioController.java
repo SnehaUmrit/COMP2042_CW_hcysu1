@@ -109,17 +109,5 @@ public class AudioController {
 		GAMEOVER_AUDIO.play();
 	}
 	
-	/**
-	 * Allows us to stop all the game audio
-	 */
-	public static void stopAllGameAudio() {
-		HOP_AUDIO.stop();
-		WATER_DEATH_AUDIO.stop();
-		STREET_DEATH_AUDIO.stop();
-		BONUS_AUDIO.stop();
-		END_AUDIO.stop();
-		WIN_AUDIO.stop();
-		GAMEOVER_AUDIO.stop();		
-	}
 	
 }

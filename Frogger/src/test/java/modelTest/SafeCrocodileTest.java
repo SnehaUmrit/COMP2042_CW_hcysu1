@@ -10,18 +10,22 @@ import model.SafeCrocodile;
 
 class SafeCrocodileTest {
 
-	SafeCrocodile crocodile;
 	/**
 	 * Before we can create JavaFX platform, we have to get the application running.
 	 * This can be done by initialising the JFXPanel before running the test methods.
-	 * This is done using @BeforeEach annotation
-	 * 
+	 * If we fail to initialise JFXPanel, then our test class would be subject to error since the graphics would not be initialised.
+	 */
+	JFXPanel panel = new JFXPanel();
+	SafeCrocodile crocodile;
+	
+	/**
+	 * Allows us to initialise SafeCrocodile object with its x and y position and speed
 	 */
 	 @BeforeEach
-	    void createPanel() {
-	        JFXPanel panel = new JFXPanel();
+	    void createBeforeTest() {
 	        crocodile = new SafeCrocodile(0,0,0.75);
 	    }
+	 
 	@Test
 	void actTest() {
 		crocodile.setX(700);
