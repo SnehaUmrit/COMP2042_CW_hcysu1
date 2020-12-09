@@ -151,7 +151,7 @@ public class MenuController {
 		
 		Label score = new Label(ScoreController.getHighScores());
 		score.setLayoutX(240);
-		score.setLayoutY(19);	
+		score.setLayoutY(14);	
 		setTextFont(score,40);
 		score.setStyle("-fx-text-fill: BLACK;");
 		scoreSubScene.getPane().getChildren().add(score);	
@@ -161,7 +161,7 @@ public class MenuController {
 								+ "3rd -> \n"
 								+ "4th -> \n"
 								+ "5th -> ");
-		rank.setLayoutY(81);
+		rank.setLayoutY(76);
 		rank.setLayoutX(150);
 		setTextFont(rank,40);
 		rank.setStyle("-fx-text-fill: green;");
