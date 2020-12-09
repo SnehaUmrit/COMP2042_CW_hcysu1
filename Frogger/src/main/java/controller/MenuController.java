@@ -321,7 +321,8 @@ public class MenuController {
 
 	
 	/**
-	 * Used to determine the set of actions to be taken as the player loses the game
+	 * Used to determine the set of actions to be taken as the player loses the game.
+	 * Shows alert message that displays the score and let player know that the game was lost.
 	 */
 	public static void gameOver() {
 		
@@ -339,7 +340,8 @@ public class MenuController {
 	}
 	
 	/**
-	 * Used to determine the set of actions to be taken when the player wins the game
+	 * Used to determine the set of actions to be taken when the player wins the game.
+	 * Shows alert message that displays the score and let player know that the game was won.
 	 */
 	public static void gameWon() {
 		ScoreModel.write(ScoreController.getScoresPath());
@@ -354,14 +356,16 @@ public class MenuController {
 		showSubScene(scoreSubScene);
 	}
 	
-	
+	/**
+	 * Allows us to close the game stage and initialise the menu stage
+	 */
 	public static void getMenu() {
 		mainStage.close();
 		intialiseStage();
 	}
 	
 	/**
-	 * Used to set the font.
+	 * Used to set the font and font size.
 	 * Uses try/catch in case the font file is not found
 	 * @param label
 	 */

@@ -19,7 +19,7 @@ import javafx.util.Duration;
 /**
  * 
  * Defines the behaviour of the frog which is controlled by the player <p>
- * Extends AnimatedObject. Uses PauseTransition to check when key is released instead of previously used setOnKeyReleased key event that was less efficient
+ * Extends AnimatedObject. Uses PauseTransition to check when key is released instead of previously used setOnKeyReleased key event that was less efficient.
  * @author Amended from given Animal class
  *
  */
@@ -246,6 +246,7 @@ public class Animal extends AnimatedObject {
 			}
 			
 			for (IntersectingObject object : objects) {
+				//Check if intersect with any of the obstacles
 				if (object instanceof Obstacle) {
 					carDeath = noMove = true;
 					LivesController.removeFrogLife();
@@ -258,27 +259,23 @@ public class Animal extends AnimatedObject {
 					ScoreController.changeScore(INSECT_BONUS);
 				} else if (object instanceof Log)
 					move(((Log) (object)).actorSpeed,0);
-				
-				
-				
+
 				else if (object instanceof WetTurtle) {
 					if (((WetTurtle) object).isSunk()) {
 						waterDeath = noMove =  true;
 						LivesController.removeFrogLife();
 					}
 				else 
-						move(((WetTurtle) (object)).actorSpeed,0);
-				
-				} else if (object instanceof Turtle)
+					move(((WetTurtle) (object)).actorSpeed,0);				
+				} 
+				else if (object instanceof Turtle)
 					move(((Turtle) (object)).actorSpeed,0);
-				
-				
+							
 				else if (object instanceof UnsafeCrocodile) {
 					if (((UnsafeCrocodile) object).isOpen()) {
 						waterDeath = noMove =  true;
 						LivesController.removeFrogLife();
-					}
-						
+					}						
 					else 
 						move(((UnsafeCrocodile) (object)).actorSpeed,0);
 					
@@ -311,9 +308,7 @@ public class Animal extends AnimatedObject {
 					} 
 				}
 				
-
-				
-			}
+			} // end for
 		}
 		
 	

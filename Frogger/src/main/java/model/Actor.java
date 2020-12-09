@@ -34,6 +34,9 @@ public abstract class Actor extends IntersectingObject{
 		setY(getY() + dy);
 	}
 
+	/**
+	 * Abstract method used in classes that extend Actor class to set the actions of the models
+	 */
 	public abstract void act();
 
 }

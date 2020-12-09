@@ -7,7 +7,7 @@ import model.Level;
 import view.LevelView;
 
 /**
- * New class that allows us to maintain the levels.<p>
+ * New class that allows us to control the levels.<p>
  * Uses LevelView to implement getLevelView method.
  * @author hcysu1
  *
@@ -33,6 +33,10 @@ public class LevelController {
 		return LEVEL_VALUE.asString();
 	}
 
+	/**
+	 * 
+	 * @return LevelView object
+	 */
     public static LevelView getLevelView() {
         return new LevelView();
     }
@@ -46,6 +50,10 @@ public class LevelController {
 		return getCurrentLevel();
 	}
 	
+	/**
+	 * 
+	 * @return elements of current level
+	 */
 	public static Actor[] getCurrentLevel() {
 		return Level.getGameLevel(LEVEL_VALUE.get());
 		

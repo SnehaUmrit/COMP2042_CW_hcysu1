@@ -689,7 +689,7 @@ ul.help-section-list {
 /*
  * Indicator icon for external links.
  */
-
+main a[href*="://"]::after {}
 
 /*
  * Styles for user-provided tables.

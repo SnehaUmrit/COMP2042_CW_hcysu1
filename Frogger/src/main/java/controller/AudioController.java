@@ -109,7 +109,9 @@ public class AudioController {
 		GAMEOVER_AUDIO.play();
 	}
 	
-	
+	/**
+	 * This audio is played when the player intersects with the purple frog.
+	 */
 	public static void playPurpleFrogAudio() {
 		PURPLE_FROG_AUDIO.seek(Duration.ZERO);
 		PURPLE_FROG_AUDIO.play();

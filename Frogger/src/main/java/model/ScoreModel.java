@@ -35,7 +35,7 @@ public class ScoreModel {
 	 * 
 	 * @param scoresPath The CSV file path from which the scores are read
 	 * @return output
-	 * @throws ParseException
+	 * @throws ParseException Signals that an error has been reached unexpectedly while parsing.
 	 */
 	public static String read(String scoresPath) throws ParseException{
 		try (BufferedReader reader = new BufferedReader ((new FileReader(scoresPath)))){

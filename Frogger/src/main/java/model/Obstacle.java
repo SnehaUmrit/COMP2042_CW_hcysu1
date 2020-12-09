@@ -51,6 +51,9 @@ public class Obstacle extends Actor {
 		}
 	}
 
+	/**
+	 * Override method from Actor class to implement move method and set the position of the obstacles during animation
+	 */
     @Override
     public void act() {
         move(actorSpeed, 0);

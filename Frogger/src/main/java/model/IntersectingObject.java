@@ -27,7 +27,7 @@ public class IntersectingObject extends ImageView{
 	
 	/**
 	 * 
-	 * @return intersectingObject List of intersecting objects
+	 * @return arraylist instance of type IntersectingObject
 	 */
 	List<IntersectingObject> getIntersectingObjects(){
 		ArrayList<IntersectingObject> objects = new ArrayList();

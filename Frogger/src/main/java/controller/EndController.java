@@ -6,7 +6,7 @@ import model.End;
 import model.IntersectingObject;
 
 /**
- * New class that allows us to set the ends using IntersectingObject. <p>
+ * New class that allows us to set the ends by defining an array of type IntersectingObject. <p>
  * Allows us to implement a method that returns the number of ends left.
  * Allows us to implement a method that can check whether all the ends are full.
  * Allows us to implement methods to check whether an end is active or not.

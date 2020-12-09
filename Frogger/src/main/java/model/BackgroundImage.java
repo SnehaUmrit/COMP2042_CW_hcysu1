@@ -13,6 +13,10 @@ import javafx.scene.image.ImageView;
  */
 public class BackgroundImage extends ImageView{
 	
+	/**
+	 * Fix width and height for background image
+	 * @param imageLink The path of the image
+	 */
 	public BackgroundImage(String imageLink) {
 		setImage(new Image(imageLink, 600, 800, true, true));
 	}

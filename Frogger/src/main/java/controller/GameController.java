@@ -21,12 +21,11 @@ import model.PurpleFrog;
 import view.GameView;
 
 /**
- * New class that allows us to set the animation of the models. <p>
+ * Allows us to set the game elements using Timeline by incorporating events that can be triggered during timeline play.<p>
  * Creates an instance of GameView.
- * Uses Timeline to set animation framerate.
  * Determine the probabilty at which the insect appears and also at which level.
- * Determines the movement of the crocodile at the ends.
- * Used to remove and set the game elements.
+ * Determines the levels on which the crocodile would appears the the ends.
+ * Allows us to set random position for the purple frog.
  * Adds a home button that allows the player to return to menu.
  * 
  * @author Amended from given World class
@@ -52,8 +51,8 @@ public class GameController {
 	/**
 	 * When level completed, all the elements of the current level is removed.
 	 * The elements of the next game are loaded.
-	 * Allows us to set the probability and level at which the insect appears and the crocodile moves 
-	 * Insect appears at most three times
+	 * Allows us to set the probability and level at which the insect appears and the crocodile moves. 
+	 * Allows us to set the random positions of the purple frogs.
 	 */
 	static final Timeline TIMELINE = new Timeline(new KeyFrame(Duration.seconds(FRAMERATE), event -> {
 				
@@ -140,6 +139,11 @@ public class GameController {
 	}
 
 
+	/**
+	 * 
+	 * @param cls class object which extends IntersectingObject
+	 * @return ArrayList instance of type IntersectingObject
+	 */
 	public static List<IntersectingObject> getObjects(Class<IntersectingObject> cls){
 		ArrayList<IntersectingObject> objects = new ArrayList<>();
 		for (Node n:gameView.getChildren()) {
@@ -149,7 +153,6 @@ public class GameController {
 		}
 		return objects;
 	}
-	
 	
 	
 	

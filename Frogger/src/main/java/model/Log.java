@@ -34,6 +34,9 @@ public class Log extends Actor {
 
 	}
 
+	/**
+	 * Override method from Actor class to set the parameters of the move method and set the position of the log during animation
+	 */
 	@Override
 	public void act() {
 		move(actorSpeed,0);
