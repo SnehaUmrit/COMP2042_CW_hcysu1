@@ -1,5 +1,6 @@
 package view;
 
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -13,8 +14,9 @@ import javafx.scene.layout.Pane;
 public class LivesView extends Pane{
 
 	private static final Image HEART = new Image("file:src/main/resources/Sprites/heart.png");
-	private static ImageView[] frogHearts;
 	
+	private static ImageView[] frogHearts;
+
 	/**
 	 * Constructor to create an array to store images of frog lives
 	 * Set the layout, width and height of the images
@@ -31,6 +33,8 @@ public class LivesView extends Pane{
 			getChildren().add(frogHearts[i]);
 		}
 	}
+	
+	
 	
 	/**
 	 * 

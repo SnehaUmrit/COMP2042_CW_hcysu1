@@ -11,7 +11,8 @@ import javafx.scene.image.Image;
 public class Insect extends IntersectingObject{
 
 	private boolean intersects = false;
-	private final Image insect = new Image("file:src/main/resources/Sprites/insect.png",20,20,false,true);
+
+	private final Image insect = new Image("file:src/main/resources/Sprites/insect.png",18,18,false,true);
 
 	/**
 	 * 

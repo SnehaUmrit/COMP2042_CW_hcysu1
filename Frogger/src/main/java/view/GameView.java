@@ -21,10 +21,12 @@ import model.BackgroundImage;
  *
  */
 public class GameView  extends Pane{
-	
+
 	static DropShadow drop;
 	
-	
+	/**
+	 * Used to append different game elements such as the game background, the level number, the current score, the level elements and the ends.
+	 */
 	public GameView() {
 		BackgroundImage gameBackground = new BackgroundImage("file:src/main/resources/Background/backdroptry16.png");
 		getChildren().add(gameBackground);	
@@ -32,17 +34,17 @@ public class GameView  extends Pane{
 		getChildren().add(LevelController.getLevelView());
 		getChildren().add(TimeController.getTimeView());
 		getChildren().add(ScoreController.getScoreView());
-		getChildren().add(LivesController.getLivesView());
-		
-		getChildren().addAll(LevelController.getStartingLevel());
-		
+		getChildren().add(LivesController.getLivesView());		
+		getChildren().addAll(LevelController.getStartingLevel());		
 		getChildren().addAll(EndController.getEnds());
-		
-		
-		
-		}
+
+	}
 	
-	
+	/**
+	 * Takes a button as a parameter and set the action based on mouse event carried out by user
+	 * Allows us to set the shadow effect of button to make it look more interactive
+	 * @param button
+	 */
 	public static void initialiseButtonListeners(Button button) {
 		drop = new DropShadow();
 		button.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -90,6 +92,12 @@ public class GameView  extends Pane{
 		
 	}
 	
+	/**
+	 * Allows us to set the ImageView as a button.
+	 * And also set the layout of the button.
+	 * @param button
+	 * @param view
+	 */
 	public static void setHomeButton(Button button, ImageView view) {	
 		button.setGraphic(view);
 		button.setBackground(null);

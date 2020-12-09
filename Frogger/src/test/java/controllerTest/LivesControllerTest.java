@@ -19,14 +19,12 @@ class LivesControllerTest {
 	@Test
 	void StartingLivesTest() {
 		LivesController.getLivesView();
-		assertEquals(6,LivesController.getFrogLives());
+		assertEquals(5,LivesController.getFrogLives());
 	}
 	 
 	@Test
 	void RemoveFrogLivesTest() {
 		LivesController.getLivesView();
-		LivesController.removeFrogLife();
-		assertEquals(5,LivesController.getFrogLives());
 		LivesController.removeFrogLife();
 		assertEquals(4,LivesController.getFrogLives());
 		LivesController.removeFrogLife();
@@ -36,7 +34,7 @@ class LivesControllerTest {
 		LivesController.removeFrogLife();
 		assertEquals(1,LivesController.getFrogLives());
 		LivesController.removeFrogLife();
-		assertEquals(0,LivesController.getFrogLives());		
+		assertEquals(0,LivesController.getFrogLives());
 	}
 
 }

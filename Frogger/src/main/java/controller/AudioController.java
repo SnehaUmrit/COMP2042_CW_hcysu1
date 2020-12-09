@@ -31,7 +31,7 @@ public class AudioController {
 	private static final MediaPlayer END_AUDIO = new MediaPlayer(new Media(new File("src/main/resources/Music/sound-frogger-extra.wav").toURI().toString()));
 	private static final MediaPlayer WIN_AUDIO = new MediaPlayer(new Media(new File("src/main/resources/Music/win.wav").toURI().toString()));
 	private static final MediaPlayer GAMEOVER_AUDIO = new MediaPlayer(new Media(new File("src/main/resources/Music/gameover.wav").toURI().toString()));
-	
+	private static final MediaPlayer  PURPLE_FROG_AUDIO = new MediaPlayer(new Media(new File("src/main/resources/Music/purpleFrog.wav").toURI().toString()));
 	/**
 	 * Allows us to play the menu audio continuously by using setCycleCount and setting it to indefinite
 	 */
@@ -109,5 +109,10 @@ public class AudioController {
 		GAMEOVER_AUDIO.play();
 	}
 	
+	
+	public static void playPurpleFrogAudio() {
+		PURPLE_FROG_AUDIO.seek(Duration.ZERO);
+		PURPLE_FROG_AUDIO.play();
+	}
 	
 }

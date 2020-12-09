@@ -11,9 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
+
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
+
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -118,15 +118,17 @@ public class MenuController {
 		helpLabel.setStyle("-fx-text-fill: GREEN;");
 		helpSubScene.getPane().getChildren().add(helpLabel);
 		
-		Label help = new Label("- PRESS W,A,S,D KEYS TO MOVE FROGGY\n"
-								+ "- AVOID VEHICES AND SNAKES\n"
-								+ "- GRAB A FLY TO GET EXTRA POINTS\n"
-								+ "- BE QUICK TO GAIN EXTRA TIME BONUS\n"
-								+ "- CROCODILES CAN BE SAFE RIDES, BUT \n"
-								+ "! ! ! BEWARE WHEN THEY OPEN THEIR MOUTH ! ! !");
+		Label help = new Label("-> PRESS W,A,S,D KEYS TO MOVE FROGGY\n"
+								+ "-> AVOID VEHICES AND SNAKES\n"
+								+ "-> GRAB AN INSECT TO GAIN EXTRA 50 POINTS\n"
+								+ "-> BE QUICK TO GAIN EXTRA TIME BONUS\n"
+								+ "-> GIVE A RIDE TO THE PURPLE FROG FOR EXTRA 200\n"
+								+ "-> CROCODILES CAN BE SAFE RIDES, BUT... \n"
+								+ "          ! ! ! BEWARE WHEN THEY OPEN THEIR MOUTH ! ! !");
 		help.setLayoutX(40);
-		help.setLayoutY(74);
-		setTextFont(help);
+		help.setLayoutY(76);
+		setTextFont(help,25);
+
 
 		help.setStyle("-fx-text-fill: BLACK;");
 		helpSubScene.getPane().getChildren().add(help);		
@@ -148,11 +150,22 @@ public class MenuController {
 		scoreSubScene.getPane().getChildren().add(scoreLabel);
 		
 		Label score = new Label(ScoreController.getHighScores());
-		score.setLayoutX(200);
-		score.setLayoutY(20);	
-		setTextFont(score);
+		score.setLayoutX(240);
+		score.setLayoutY(19);	
+		setTextFont(score,40);
 		score.setStyle("-fx-text-fill: BLACK;");
 		scoreSubScene.getPane().getChildren().add(score);	
+		
+		Label rank = new Label(" 1st -> \n"
+								+ "2nd -> \n"
+								+ "3rd -> \n"
+								+ "4th -> \n"
+								+ "5th -> ");
+		rank.setLayoutY(81);
+		rank.setLayoutX(150);
+		setTextFont(rank,40);
+		rank.setStyle("-fx-text-fill: green;");
+		scoreSubScene.getPane().getChildren().add(rank);	
 		
 	}
 
@@ -352,11 +365,11 @@ public class MenuController {
 	 * Uses try/catch in case the font file is not found
 	 * @param label
 	 */
-	private static void setTextFont(Label label) {
+	private static void setTextFont(Label label, int fontsize) {
 		try {
-			label.setFont(Font.loadFont(new FileInputStream("src/main/resources/Font/Kenney Pixel.ttf"),30));
+			label.setFont(Font.loadFont(new FileInputStream("src/main/resources/Font/Kenney Pixel.ttf"),fontsize));
 		} catch(FileNotFoundException e) {
-			label.setFont(Font.font("Verdana",30));
+			label.setFont(Font.font("Verdana",fontsize));
 		}
 	}
 

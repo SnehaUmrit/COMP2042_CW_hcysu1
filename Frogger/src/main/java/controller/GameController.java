@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import model.Actor;
 import model.Insect;
 import model.IntersectingObject;
+import model.PurpleFrog;
 import view.GameView;
 
 /**
@@ -26,6 +27,7 @@ import view.GameView;
  * Determine the probabilty at which the insect appears and also at which level.
  * Determines the movement of the crocodile at the ends.
  * Used to remove and set the game elements.
+ * Adds a home button that allows the player to return to menu.
  * 
  * @author Amended from given World class
  *
@@ -44,9 +46,9 @@ public class GameController {
 	/**
 	 * Appearance of insect which serve as bonus points to frog
 	 */
-	private static int bonus = 0;
+	private static int insect = 0;
+	private static int purpleFrog = 0;
 
-	
 	/**
 	 * When level completed, all the elements of the current level is removed.
 	 * The elements of the next game are loaded.
@@ -86,17 +88,28 @@ public class GameController {
 				EndController.moveCrocodile();
 			}
 
-		} else if (bonus < 3 && probability > 0.5 && probability < 0.5005) {
+		} else if (insect < 1 && probability > 0.5 && probability < 0.5005) {
 			probability = ANIMATION.nextDouble();
 			int componentY = ANIMATION.nextInt(8);
 			int componentX = ANIMATION.nextInt(4);
 			int y = (componentY + 3) * 50 +1 ;
 			int x = (componentX + 100);
-			if (LevelController.getLevel() == 1 || LevelController.getLevel() == 2 || LevelController.getLevel() == 3 || LevelController.getLevel() == 4 || LevelController.getLevel() == 5) {
+			if (LevelController.getLevel() == 1 || LevelController.getLevel() == 2 || LevelController.getLevel() == 5) {
 				gameView.getChildren().add(new Insect(x,y));
-				bonus++;
-			}						
-		}
+				insect++;
+			}	
+			
+		} else if (purpleFrog < 1 && probability > 0.5 && probability < 0.5005 ) {
+			probability = ANIMATION.nextDouble();
+			int componentX = ANIMATION.nextInt(5);
+			int x = (componentX + 60);
+			int y = 368;
+			if (LevelController.getLevel() == 3 || LevelController.getLevel() == 6 || LevelController.getLevel() == 8) {
+				gameView.getChildren().add(new PurpleFrog(x,y));
+				purpleFrog++;
+			}	
+			
+		} 
 		
 
 		

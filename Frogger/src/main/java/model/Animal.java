@@ -11,9 +11,9 @@ import controller.MenuController;
 import controller.ScoreController;
 import controller.TimeController;
 import javafx.animation.PauseTransition;
-import javafx.event.EventHandler;
+
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+
 import javafx.util.Duration;
 
 /**
@@ -31,7 +31,7 @@ public class Animal extends AnimatedObject {
 	private static final int WATER_LEVEL = 350;
 	private static final int INSECT_BONUS = 50;
 	private final PauseTransition pause = new PauseTransition(Duration.millis(120));
-	private boolean noMove, carDeath, waterDeath = false;
+	private boolean noMove, carDeath, waterDeath, purpleFrog = false;
 	private static boolean gameOver;
 
 	/**
@@ -47,7 +47,7 @@ public class Animal extends AnimatedObject {
 				"file:src/main/resources/Sprites/froggerUp.png",       //0
 				"file:src/main/resources/Sprites/froggerLeft.png",     //1
 				"file:src/main/resources/Sprites/froggerDown.png",		//2
-				"file:src/main/resources/Sprites/froggerRight.png",	//3
+				"file:src/main/resources/Sprites/froggerRight.png",	    //3
 				"file:src/main/resources/Sprites/froggerUpJump.png",	//4
 				"file:src/main/resources/Sprites/froggerLeftJump.png",	//5
 				"file:src/main/resources/Sprites/froggerDownJump.png",	//6
@@ -59,7 +59,15 @@ public class Animal extends AnimatedObject {
 				"file:src/main/resources/Sprites/waterdeath1.png",		//12
 				"file:src/main/resources/Sprites/waterdeath2.png",		//13
 				"file:src/main/resources/Sprites/waterdeath3.png",		//14
-				"file:src/main/resources/Sprites/waterdeath4.png"		//15
+				"file:src/main/resources/Sprites/waterdeath4.png",		//15
+				"file:src/main/resources/Sprites/purplefrogUp.png",		//16
+				"file:src/main/resources/Sprites/purplefrogUpJump.png", //17
+				"file:src/main/resources/Sprites/purplefrogDown.png",   //18
+				"file:src/main/resources/Sprites/purplefrogDownJump.png", //19
+				"file:src/main/resources/Sprites/purplefrogLeft.png",  //20
+				"file:src/main/resources/Sprites/purplefrogLeftJump.png", //21
+				"file:src/main/resources/Sprites/purplefrogRight.png",   //22
+				"file:src/main/resources/Sprites/purplefrogRightJump.png" //23
 		});
 		
 		setState(0);
@@ -67,44 +75,83 @@ public class Animal extends AnimatedObject {
 		setOnKeyPressed(KeyEvent -> {
 			if (!noMove) {
 				if (KeyEvent.getCode() == KeyCode.W) {
-					AudioController.playHopAudio();	
-					
-					setState(4);
+					AudioController.playHopAudio();						
+					if (purpleFrog == true) {
+						setState(17);
+					} else {
+						setState(4);
+					}					
 					move(0,-CONSTANT);
 					pause.setOnFinished(actionEvent ->{
 						ScoreController.changeScore(1);
-						move (0, -CONSTANT);
-						setState(0);
+						move (0, -CONSTANT);						
+						if (purpleFrog == true) {
+							setState(16);
+						} else {
+							setState(0);
+						}
+						
+							
+							
 					});
 				}
 				
 				if (KeyEvent.getCode() == KeyCode.A) {
 					AudioController.playHopAudio();
-					setState(5);
+					if (purpleFrog == true) {
+						setState(21);
+					} else {
+						setState(5);
+					}
+
 					move(-CONSTANT,0);
 					pause.setOnFinished(actionEvent -> {
 						move(-CONSTANT,0);
-						setState(1);
+						if (purpleFrog == true) {
+							setState(20);
+						} else {
+							setState(1);
+						}
 					});
 				}
 				
 				if (KeyEvent.getCode() == KeyCode.S) {
 					AudioController.playHopAudio();
-					setState(6);
+					if (purpleFrog == true) {
+						setState(19);
+					} else {
+						setState(6);
+					}
+
 					move(0,CONSTANT);
 					pause.setOnFinished(actionEvent -> {
 						move(0,CONSTANT);
-						setState(2);
+						if (purpleFrog == true) {
+							setState(18);
+						} else {
+							setState(2);
+						}
+
 					});
 				}
 				
 				if (KeyEvent.getCode() == KeyCode.D) {
 					AudioController.playHopAudio();
-					setState(7);
+					if (purpleFrog == true) {
+						setState(23);
+					} else {
+						setState(7);
+					}
+
 					move(CONSTANT,0);
 					pause.setOnFinished(actionEvent -> {
 						move(CONSTANT,0);
-						setState(3);
+						if (purpleFrog == true) {
+							setState(22);
+						} else {
+							setState(3);
+						}
+
 					});
 				}
 				
@@ -125,6 +172,7 @@ public class Animal extends AnimatedObject {
 	}
 
 
+
 	/**
 	 * Method to change points accordingly and reset the progress bar and position of frog.
 	 * Uses the changeScore method from ScoreController
@@ -137,8 +185,9 @@ public class Animal extends AnimatedObject {
 			carDeath = waterDeath = noMove = false;
 			checks = 0;
 			setState(0);
+			TimeController.reset();	
 			ScoreController.changeScore(points);
-			TimeController.reset();		
+				
 		});
 		pause.play();
 	}
@@ -159,8 +208,7 @@ public class Animal extends AnimatedObject {
 					changePoints(0);
 				}
 				
-			} else if (!gameOver) {
-				
+			} else if (!gameOver) {			
 				gameOver = true;	
 				AudioController.playGameOverAudio();
 				MenuController.gameOver();
@@ -177,13 +225,14 @@ public class Animal extends AnimatedObject {
 		
 		
 		if (carDeath) {
-			
+			purpleFrog = false;
 			AudioController.playStreetDeathAudio();
 			setAnimation(Arrays.copyOfRange(states,8,12),20);				
 		}
 			
 			
 		else if (waterDeath) {
+			purpleFrog = false;
 			AudioController.playWaterDeathAudio();
 			setAnimation(Arrays.copyOfRange(states, 12, 16),20);
 		}
@@ -211,6 +260,7 @@ public class Animal extends AnimatedObject {
 					move(((Log) (object)).actorSpeed,0);
 				
 				
+				
 				else if (object instanceof WetTurtle) {
 					if (((WetTurtle) object).isSunk()) {
 						waterDeath = noMove =  true;
@@ -235,7 +285,14 @@ public class Animal extends AnimatedObject {
 				} else if (object instanceof SafeCrocodile)
 					move(((SafeCrocodile) (object)).actorSpeed,0);
 				
-	
+				else if (object instanceof PurpleFrog && !((PurpleFrog) object).isIntersecting()) {
+					((PurpleFrog) object).intersect();
+					AudioController.playPurpleFrogAudio();
+					setState(16);
+					purpleFrog = true;
+				}
+				
+				
 				else if (object instanceof End) {
 					if (EndController.unsafe(object)) {
 						noMove = carDeath = true;
@@ -243,8 +300,14 @@ public class Animal extends AnimatedObject {
 					} else if (EndController.inactive(object)) {
 						noMove = true;
 						AudioController.playEndAudio();
-						EndController.activate(object);						
-						changePoints((int) (100 + (10 * Math.round(TimeController.getProgressbarValue()))));
+						EndController.activate(object);							
+						if (purpleFrog == true) {
+							purpleFrog = false;
+							changePoints(200);
+						} else {
+							changePoints((int) (100 + (10 * Math.round(TimeController.getProgressbarValue()))));
+						}
+						
 					} 
 				}
 				

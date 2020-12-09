@@ -467,8 +467,8 @@ public class Level {
 			new Obstacle(300,410,"short white truck",1),
 			new Obstacle(600,410,"short white truck",1),
 			
-			//Appearance of snake on median
-			new Snake(200,367,-1.5),
+			//Safe Median
+			
 			
 			//river row 1
 			new WetTurtle(200,310,-1),
