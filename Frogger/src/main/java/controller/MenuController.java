@@ -5,8 +5,11 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.javafx.tk.Toolkit;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Dimension2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -19,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import model.BackgroundImage;
@@ -57,7 +61,7 @@ public class MenuController {
 	private static DropShadow drop;
 	
 	static List<ButtonView> menuButtons;
-	
+
 	/**
 	 * Create main pane, scene and stage
 	 * Allows us to set the scene
@@ -70,6 +74,7 @@ public class MenuController {
 		mainScene = new Scene(mainPane,WIDTH,HEIGHT);
 		mainStage = new Stage();
 		mainStage.setScene(mainScene);
+		
 
 		AudioController.playMenuAudio();
 		createBackground();
@@ -203,10 +208,10 @@ public class MenuController {
 			@Override
 			public void handle(ActionEvent event) {
 				
-				GameView gameView = GameController.getGame();
-				
-				gameScene = new Scene(gameView,WIDTH,HEIGHT);
+				GameView gameView = GameController.getGame();			
+				gameScene = new Scene(gameView,WIDTH,HEIGHT);				
 				mainStage.setScene(gameScene);
+
 
 			}
 			

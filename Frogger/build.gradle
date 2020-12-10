@@ -30,6 +30,6 @@ dependencies {
 javafx {
 	//Points to JDK and JavaFX libraries 
     version = "11.0.2" //Specify the version of JavaFX SDK
-    modules = [ 'javafx.controls', 'javafx.media', 'javafx.graphics',  'javafx.swing' ]
+    modules = [ 'javafx.controls', 'javafx.media', 'javafx.graphics',  'javafx.swing', 'javafx.fxml' ]
 }
 

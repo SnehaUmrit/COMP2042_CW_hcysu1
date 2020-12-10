@@ -3,17 +3,17 @@ This report provides a summary on the major refactorings and additions made from
 
 
 ## Gradle Run
-A build file is added as it automatically downloads and configures the dependencies and other libraries used. 
+A build file is added as it automatically downloads and configures the dependencies and other libraries used. Gradle Wrapper allows us to run the build file without installing Gradle. When we invoke "gradlew", it downloads and builds the Gradle version specified. 
 In order to run the Frogger application from the command line, the following steps can be followed:
 1. Open command prompt and change the directory to where the files have been downloaded.
-2. Run the application using the command "gradle run".
+2. Run the application using the command "gradlew run".
 
 ```
- > cd "Path of files"
+ > cd "C:\Users\Admin_Name\Folder_Name\Umrit_Sneha_Eclipse_15\Frogger\Frogger"
 ```
 
 ``` 
- > gradle run
+ > gradlew run
 ```
 
 

@@ -30,7 +30,7 @@ public class IntersectingObject extends ImageView{
 	 * @return arraylist instance of type IntersectingObject
 	 */
 	List<IntersectingObject> getIntersectingObjects(){
-		ArrayList<IntersectingObject> objects = new ArrayList();
+		ArrayList<IntersectingObject> objects = new ArrayList<IntersectingObject>();
 		for (IntersectingObject object : GameController.getObjects(IntersectingObject.class)) {
 			if (object != this && object.intersects(this.getBoundsInLocal())) {
 				objects.add(object);
