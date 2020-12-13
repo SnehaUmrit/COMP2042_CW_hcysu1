@@ -9,10 +9,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import model.Actor;
 import model.Insect;
@@ -56,17 +53,6 @@ public class GameController {
 	 */
 	static final Timeline TIMELINE = new Timeline(new KeyFrame(Duration.seconds(FRAMERATE), event -> {
 				
-		Button homeButton = new Button();
-		
-		ImageView view = new ImageView(new Image("file:src/main/resources/Buttons/home.png"));
-		view.setFitHeight(30);
-		view.setFitWidth(30);
-		view.setPreserveRatio(true);
-	
-		GameView.setHomeButton(homeButton,view);
-		GameView.initialiseButtonListeners(homeButton);
-		gameView.getChildren().add(homeButton);
-		
 		if (EndController.levelCompleted()) {
 			EndController.newLevel();
 			gameView.getChildren().removeAll(LevelController.getCurrentLevel());
@@ -98,10 +84,10 @@ public class GameController {
 				insect++;
 			}	
 			
-		} else if (purpleFrog < 1 && probability > 0.5 && probability < 0.5005 ) {
+		} else if (purpleFrog < 1 && probability < 0.9) {
 			probability = ANIMATION.nextDouble();
-			int componentX = ANIMATION.nextInt(5);
-			int x = (componentX + 60);
+			int componentX = ANIMATION.nextInt(10);
+			int x = (componentX + 3) * 50 + 1;
 			int y = 368;
 			if (LevelController.getLevel() == 3 || LevelController.getLevel() == 6 || LevelController.getLevel() == 8) {
 				gameView.getChildren().add(new PurpleFrog(x,y));
@@ -109,10 +95,8 @@ public class GameController {
 			}	
 			
 		} 
-		
-
-		
-		
+			
+		 
 		
 	}));
 	

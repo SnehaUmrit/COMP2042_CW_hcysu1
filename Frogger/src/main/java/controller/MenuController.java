@@ -5,24 +5,25 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.javafx.tk.Toolkit;
+
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Dimension2D;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 
 import javafx.scene.effect.DropShadow;
-
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Screen;
+
 import javafx.stage.Stage;
 
 import model.BackgroundImage;
@@ -83,7 +84,7 @@ public class MenuController {
 		createHelpSubScenes();
 		createScoreSubScene();
 		
-		mainStage.setTitle("Frogger Menu");
+		mainStage.setTitle("Frogger");
 		mainStage.show();		
 	}
 	
@@ -208,8 +209,19 @@ public class MenuController {
 			@Override
 			public void handle(ActionEvent event) {
 				
-				GameView gameView = GameController.getGame();			
-				gameScene = new Scene(gameView,WIDTH,HEIGHT);				
+				GameView gameView = GameController.getGame();	
+				Button homeButton = new Button();
+				
+				ImageView view = new ImageView(new Image("file:src/main/resources/Buttons/home.png"));
+				view.setFitHeight(30);
+				view.setFitWidth(30);
+				view.setPreserveRatio(true);
+				GameView.setHomeButton(homeButton,view);
+				GameView.initialiseButtonListeners(homeButton);
+				gameView.getChildren().add(homeButton);
+				
+				AudioController.stopMenuAudio();
+				gameScene = new Scene(gameView,WIDTH,HEIGHT);		
 				mainStage.setScene(gameScene);
 
 
@@ -330,7 +342,7 @@ public class MenuController {
 	 * Shows alert message that displays the score and let player know that the game was lost.
 	 */
 	public static void gameOver() {
-		
+
 		ScoreModel.write(ScoreController.getScoresPath());
 		mainStage.close();
 		intialiseStage();
@@ -350,6 +362,7 @@ public class MenuController {
 	 */
 	public static void gameWon() {
 		ScoreModel.write(ScoreController.getScoresPath());
+		
 		mainStage.close();
 		intialiseStage();
 		

@@ -21,7 +21,7 @@ public class ScoreController {
 	/**
 	 * Indicate file path of CSV file
 	 */
-	private static final String SCORES_PATH = "src/main/resources/score-file.csv";
+	private static final String SCORES_PATH = "src/main/resources/GameScores.csv";
 	private static IntegerProperty score = new SimpleIntegerProperty(0);
 	
 	/**

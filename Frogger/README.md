@@ -3,13 +3,16 @@ This report provides a summary on the major refactorings and additions made from
 
 
 ## Gradle Run
+
+**Pre-requisite : Java 10 or Newer**
+
 A build file is added as it automatically downloads and configures the dependencies and other libraries used. Gradle Wrapper allows us to run the build file without installing Gradle. When we invoke "gradlew", it downloads and builds the Gradle version specified. 
 In order to run the Frogger application from the command line, the following steps can be followed:
-1. Open command prompt and change the directory to where the files have been downloaded.
+1. Open command prompt and change the directory to where the **build.gradle** file is found.
 2. Run the application using the command "gradlew run".
 
 ```
- > cd "C:\Users\Admin_Name\Folder_Name\Umrit_Sneha_Eclipse_15\Frogger\Frogger"
+ > cd "C:\Users\<Admin_Name>\<Folder_Name>\Umrit_Sneha_Eclipse_15\Frogger\Frogger"
 ```
 
 ``` 
@@ -107,7 +110,7 @@ A button has been added in the game pane that allows us to return to the menu sc
 
 ## Reflections
 
-After making the changes, it can be deduced that it is now better to manage the classes as well as the relationships between them while also improving encapsulation. The classes have been made more maintenable and we can easily add more game obstacles or levels. The game has also been made more interesting with the varying audio and different levels with better graphics. There are also several test classes that have been implemented to check the proper functionality of several elements.
+After making the changes, it can be deduced that it is now better to manage the classes as well as the relationships between them while also improving encapsulation. The classes have been made more maintainable and we can easily add more game obstacles or levels. The game has also been made more interesting with the varying audio and different levels with better graphics. There are also several test classes that have been implemented to check the proper functionality of several elements.
 
 
 ## Amended File Structure

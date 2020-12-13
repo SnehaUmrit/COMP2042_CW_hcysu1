@@ -2,7 +2,6 @@ package viewTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javafx.embed.swing.JFXPanel;
@@ -20,8 +19,8 @@ class LivesViewTest {
 
 	@Test
 	void StartingLivesTest() {
-		LivesView livesView = new LivesView(6);
-		assertEquals(6,LivesView.getFrogHearts().length);
+		LivesView livesView = new LivesView(5);
+		assertEquals(5,LivesView.getFrogHearts().length);
 	}
 
 }
