@@ -20,7 +20,7 @@ In order to run the Frogger application from the command line, the following ste
 ```
 
 
-## Major Refactorings
+## Major Refactoring Activities
 **1. Rearranging the classes and resources**
 
 Classes that were previously all in one package have been arranged using the MVC pattern. The resources have also been arranged into a resources folder which is further divided into meaningful folders. Allows easy identification of the numerous resources and easily set the path. 
