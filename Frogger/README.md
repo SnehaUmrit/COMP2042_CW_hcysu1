@@ -1,5 +1,5 @@
 # Frogger (Classic Retro Game)
-This report provides a summary on the major refactoring tasks and additions made from the [given](https://github.com/hirish99/Frogger-Arcade-Game) codes for the Software Maintenance Coursework. 
+This report provides a summary on the major refactoring activities and additions made from the [given](https://github.com/hirish99/Frogger-Arcade-Game) codes for the Software Maintenance Coursework. 
 
 
 ## Gradle Run
