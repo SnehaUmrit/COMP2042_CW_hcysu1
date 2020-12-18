@@ -19,6 +19,12 @@ In order to run the Frogger application from the command line, the following ste
  > gradlew run
 ```
 
+We can further check all the JUnit tests implemented in the project by running the following command.
+
+``` 
+ > gradle test
+```
+
 
 ## Major Refactoring Activities
 **1. Rearranging the classes and resources**
