@@ -181,16 +181,16 @@ src
 **Frogger Menu, Help SubScene and Score SubScene**
 
 <p float="left">
-  <img src=https://www.linkpicture.com/q/froggerMenu_1.png width="300" height="400" />
-  <img src=https://www.linkpicture.com/q/helpSubScene.png width="300" height="400"/> 
-  <img src=https://www.linkpicture.com/q/scoreSubScene_1.png width="300" height="400"/>
+  <img src=https://github.com/SnehaUmrit/COMP2042_CW_hcysu1/blob/master/Game_Screenshots/froggerMenu.png width="300" height="400" />
+  <img src=https://github.com/SnehaUmrit/COMP2042_CW_hcysu1/blob/master/Game_Screenshots/helpSubScene.png width="300" height="400"/> 
+  <img src=https://github.com/SnehaUmrit/COMP2042_CW_hcysu1/blob/master/Game_Screenshots/scoreSubScene.png width="300" height="400"/>
 </p>
 
 
 **Level 1, Level 5 and Level 10**
 
 <p float="left">
-  <img src=https://www.linkpicture.com/q/level1.png width="300" height="400" />
-  <img src=https://www.linkpicture.com/q/level5.png width="300" height="400"/> 
-  <img src=https://www.linkpicture.com/q/level10_1.png width="300" height="400"/>
+  <img src=https://github.com/SnehaUmrit/COMP2042_CW_hcysu1/blob/master/Game_Screenshots/level1.png width="300" height="400" />
+  <img src=https://github.com/SnehaUmrit/COMP2042_CW_hcysu1/blob/master/Game_Screenshots/level5.png width="300" height="400"/> 
+  <img src=https://github.com/SnehaUmrit/COMP2042_CW_hcysu1/blob/master/Game_Screenshots/level10.png width="300" height="400"/>
 </p>
